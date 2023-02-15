@@ -1,6 +1,7 @@
-export const ADD = 'ADD'
-export function add() {
+export const GET_CARDS = 'GET_CARDS'
+export function getCards(payload: CardDetails[]) {
     return {
-        type: ADD,
+        type: GET_CARDS,
+        payload
     }
 }

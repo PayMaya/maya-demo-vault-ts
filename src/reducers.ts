@@ -1,12 +1,13 @@
-import { ADD } from "./actions"
+import { GET_CARDS } from "./actions"
 
-const count = (state: number = 0, action: any): number => {
+const cards = (state: CardDetails[] = [], action: any): CardDetails[] => {
     switch (action.type) {
-        case ADD:
-            return state + 1
+        case GET_CARDS:
+            const { payload } = action 
+            return payload
         default:
             return state
     }
 }
 
-export { count }
+export { cards }

@@ -7,6 +7,7 @@ import { persistStore } from 'redux-persist'
 import { PersistGate } from 'redux-persist/lib/integration/react'
 import { Provider } from 'react-redux';
 import { updateStore } from './store';
+import config from './config';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -14,6 +15,11 @@ const root = ReactDOM.createRoot(
 
 const store = updateStore()
 const persistor = persistStore(store)
+
+// check if API keys are provided - if not, don't render
+if (!(config.maya_payments.pub_api_key && config.maya_payments.sec_api_key)) {
+  throw new Error('Incomplete API keys.')
+}
 
 root.render(
   <Provider store={store}>

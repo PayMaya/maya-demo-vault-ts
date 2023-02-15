@@ -1,5 +1,13 @@
-import { add } from "./actions";
+import { getCards } from "./actions";
+import { retrieveCards } from "./services/cardService";
 
-export function addThunk() {
-    return (dispatch: any) => dispatch(add())
+export const getCardsThunk = (id: string) => {
+    return async (dispatch: any) => {
+        try {
+            const res = await retrieveCards(id)
+            dispatch(getCards(res))
+        } catch (err) {
+            console.log(err)
+        }
+    }
 }
