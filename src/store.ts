@@ -4,7 +4,7 @@ import { persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import autoMergeLevel2 from "redux-persist/lib/stateReconciler/autoMergeLevel2"
 import thunk from 'redux-thunk'
-import { count } from './reducers'
+import { cards, cart, currentUser } from './reducers'
 
 const persistConfig = {
     key: 'root',
@@ -13,7 +13,9 @@ const persistConfig = {
 }
 
 const persistentReducer = combineReducers({
-    count: persistReducer<number, any>(persistConfig, count),
+    cards: persistReducer<CardDetails[], any>(persistConfig, cards),
+    currentUser: persistReducer<User, any>(persistConfig, currentUser),
+    cart: persistReducer<Cart, any>(persistConfig, cart),
 })
 
 export const updateStore = () => 
