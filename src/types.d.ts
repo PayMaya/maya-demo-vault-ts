@@ -1,6 +1,8 @@
 interface AppState {
     count: number
     cards: CardDetails[]
+    currentUser: User
+    cart: Cart
 }
 
 interface CardDetails {
@@ -14,4 +16,31 @@ interface CardDetails {
     walletType: string
     state: string
     default: boolean
+}
+
+interface User {
+    firstName: string
+    lastName: string
+    email: string
+}
+
+interface Product {
+    name: string,
+    unitPrice: number
+}
+
+type CartAction = {
+    type: string
+    payload: Product
+}
+
+interface Cart {
+    items: CartItem[]
+    quantity: number
+    totalAmount: number
+}
+interface CartItem {
+    product: Product
+    quantity: number
+    totalPrice: number
 }
