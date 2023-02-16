@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import CreditCard from './CreditCard';
 
 function CreditCardList() {
-    const cards: CardDetails[] = useSelector((state: AppState) => state.cards.list)
+    const cards: CardDetails[] = useSelector((state: AppState) => state.cards)
 
     if (cards.length === 0) {
         return (

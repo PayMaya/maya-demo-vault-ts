@@ -1,19 +1,16 @@
 import * as cardActionTypes from "./actions/card/actionTypes"
 import * as cartActionTypes from "./actions/cart/actionTypes"
 
-const initCards = {
-  list: [],
-  count: 0
-}
-const cards = (state: Cards = initCards, action: GetCardsAction): Cards => {
+const cards = (state: CardDetails[] = [], action: GetCardsAction): CardDetails[] => {
     switch (action.type) {
         case cardActionTypes.GET_CARDS_SUCCESSFUL:
           const { payload } = action 
-          const newCards: Cards = {
-            list: payload,
-            count: payload.length
-          }
-          return newCards
+          return payload
+          // const newCards: Cards = {
+          //   list: payload,
+          //   count: payload.length
+          // }
+          // return newCards
         default:
           return state
     }

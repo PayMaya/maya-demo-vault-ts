@@ -11,11 +11,6 @@ interface CardDetails {
     default: boolean
 }
 
-interface Cards {
-    list: CardDetails[]
-    count: number
-}
-
 interface GetCardsAction {
     type: string
     payload: CardDetails[]
