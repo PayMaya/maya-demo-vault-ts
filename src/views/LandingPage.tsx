@@ -7,12 +7,13 @@ import UserCard from '../components/UserCard';
 import HomeButton from '../components/HomeButton';
 import TitleSection from '../components/TitleSection';
 import ContentSection from '../components/ContentSection';
+import CardsButton from '../components/CardsButton';
 
 function LandingPage() {
   return (
     <div className='body'>
       <NavBar
-        left={<HomeButton />}
+        left={<><HomeButton /><CardsButton /></>}
         right={<><CartSummaryButton /><UserCard /></>}
       />
       <TitleSection text="Products" />

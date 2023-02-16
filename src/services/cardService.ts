@@ -11,9 +11,24 @@ export const retrieveCards = async (id: string) => {
         authorization: `Basic ${token}`,
     }
 
-    console.log(token)
-
     const response = await axios.get(`${mayaPaymentsUrl}/customers/${id}/cards`, { headers })
+    const cards: CardDetails[] = response.data
+    return cards
+}
+
+export const updateCard = async (id: string, cardTokenId: string) => {
+    const headers = {
+        accept: 'application/json',
+        authorization: `Basic ${token}`,
+    }
+
+    const req = {
+        isDefault: true
+    }
+
+    console.log(cardTokenId)
+    
+    const response = await axios.put(`${mayaPaymentsUrl}/customers/${id}/cards/${cardTokenId}`, req, { headers })
     const cards: CardDetails[] = response.data
     return cards
 }

@@ -1,13 +1,21 @@
-import { GET_CARDS } from "./actions"
+import * as cardActionTypes from "./actions/card/actionTypes"
 import * as cartActionTypes from "./actions/cart/actionTypes"
 
-const cards = (state: CardDetails[] = [], action: any): CardDetails[] => {
+const initCards = {
+  list: [],
+  count: 0
+}
+const cards = (state: Cards = initCards, action: GetCardsAction): Cards => {
     switch (action.type) {
-        case GET_CARDS:
-            const { payload } = action 
-            return payload
+        case cardActionTypes.GET_CARDS_SUCCESSFUL:
+          const { payload } = action 
+          const newCards: Cards = {
+            list: payload,
+            count: payload.length
+          }
+          return newCards
         default:
-            return state
+          return state
     }
 }
 
@@ -57,7 +65,8 @@ const cart = (state: Cart = initCart, action: CartAction): Cart => {
 const defaultUser: User = {
     firstName: 'Anya',
     lastName: 'Forger',
-    email: 'anyaforger@test.com'
+    email: 'anyaforger@test.com',
+    mayaCustomerId: '5b3739ea-759d-47a2-b30c-9f5e2fb2faff'
   }
   const currentUser = (state: User = defaultUser, action: CartAction): User => {
     return state

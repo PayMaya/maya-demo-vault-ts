@@ -13,10 +13,14 @@ const persistConfig = {
 }
 
 const persistentReducer = combineReducers({
-    cards: persistReducer<CardDetails[], any>(persistConfig, cards),
+    cards: persistReducer<Cards, any>(persistConfig, cards),
     currentUser: persistReducer<User, any>(persistConfig, currentUser),
     cart: persistReducer<Cart, any>(persistConfig, cart),
 })
+
+// const test = { cards, cart, currentUser }
+// const reducers = combineReducers<AppState>(test)
+// const persistentReducer = persistReducer(reducers, persistConfig)
 
 export const updateStore = () => 
     configureStore({

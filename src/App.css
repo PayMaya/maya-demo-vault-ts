@@ -265,3 +265,32 @@ p {
 .content {
   flex: 1 0 auto;
 }
+
+.cards-header {
+  font-family: "jeko-bold",sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 0 1vw;
+  justify-content: space-around;
+  text-align: center;
+  font-weight: bold;
+}
+
+.credit-card-container {
+  font-family: "jeko-bold",sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 1vh 1vw;
+  border: solid 1px #F4F5F5;
+  background-color: #F4F5F5;
+  border-radius: 10px;
+  justify-content: space-around;
+  text-align: center; 
+}
+
+.credit-card-container .column {
+  float: left;
+  width: 33.33%;
+}
