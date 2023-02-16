@@ -25,7 +25,7 @@ function CreditCard ({ card }: CreditCardProps) {
     return (
         <div className='credit-card-container'>
             <div className='column'><p> {card.cardType} </p></div>
-            <div className='column'><p> {`${card.first6}*****${card.last4}`} </p></div>
+            <div className='column'><p> {`${card.first6} ***** ${card.last4}`} </p></div>
             <div className='column'>{status}</div>
         </div>
    )

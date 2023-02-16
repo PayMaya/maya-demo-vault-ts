@@ -1,4 +1,4 @@
-import CardsButton from "../components/CardsButton";
+import CreditCardsButton from "../components/CreditCardsButton";
 import CartSummaryButton from "../components/CartSummaryButton";
 import ContentSection from "../components/ContentSection";
 import CreditCardList from "../components/CreditCardList";
@@ -12,7 +12,7 @@ function CardsPage() {
     return (
         <div className='body'>
             <NavBar
-                left={<><HomeButton /><CardsButton /></>}
+                left={<><HomeButton /><CreditCardsButton /></>}
                 right={<><CartSummaryButton /><UserCard /></>}
             />
             <TitleSection text='Cards'/>

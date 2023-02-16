@@ -5,13 +5,13 @@ import Footer from '../components/Footer';
 import UserCard from '../components/UserCard';
 import HomeButton from '../components/HomeButton';
 import ContentSection from '../components/ContentSection';
-import CardsButton from '../components/CardsButton';
+import CreditCardsButton from '../components/CreditCardsButton';
 
 function CartPage() {
   return (
     <div className='body'>
       <NavBar
-        left={<><HomeButton /><CardsButton /></>}
+        left={<><HomeButton /><CreditCardsButton /></>}
         right={<UserCard />}
       />
       <TitleSection text='Your Cart'/>

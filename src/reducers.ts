@@ -6,11 +6,6 @@ const cards = (state: CardDetails[] = [], action: GetCardsAction): CardDetails[]
         case cardActionTypes.GET_CARDS_SUCCESSFUL:
           const { payload } = action 
           return payload
-          // const newCards: Cards = {
-          //   list: payload,
-          //   count: payload.length
-          // }
-          // return newCards
         default:
           return state
     }
