@@ -1,20 +1,27 @@
-import { Dispatch } from 'redux';
-import { useEffect } from "react"
-import { useSelector, useDispatch } from "react-redux"
-import { getCardsThunk } from '../thunks';
+import VaultedCardsButton from "../components/VaultedCardsButton";
+import CartSummaryButton from "../components/CartSummaryButton";
+import ContentSection from "../components/ContentSection";
+import VaultedCardList from "../components/VaultedCardList";
+import Footer from "../components/Footer";
+import HomeButton from "../components/HomeButton";
+import NavBar from '../components/NavBar';
+import TitleSection from "../components/TitleSection";
+import UserCard from "../components/UserCard";
 
 function CardsPage() {
-    const cards: CardDetails[] = useSelector(
-        (state: AppState) => state.cards,
+    return (
+        <div className='body'>
+            <NavBar
+                left={<><HomeButton /><VaultedCardsButton /></>}
+                right={<><CartSummaryButton /><UserCard /></>}
+            />
+            <TitleSection text='Cards'/>
+            <ContentSection>
+                <VaultedCardList />
+            </ContentSection>
+            <Footer />
+        </div>
     )
-    const dispatch: Dispatch<any> = useDispatch()
-        
-    useEffect(() => {
-        dispatch(getCardsThunk('5b3739ea-759d-47a2-b30c-9f5e2fb2faff'))
-        console.log(cards)
-    }, []) // eslint-disable-line react-hooks/exhaustive-deps
-
-    return (<p>CardsPage</p>)
 }
 
 export default CardsPage
