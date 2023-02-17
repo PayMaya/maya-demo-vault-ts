@@ -1,7 +1,7 @@
 import CreditCardsButton from "../components/CreditCardsButton";
 import CartSummaryButton from "../components/CartSummaryButton";
 import ContentSection from "../components/ContentSection";
-import CreditCardList from "../components/CreditCardList";
+import VaultedCardList from "../components/VaultedCardList";
 import Footer from "../components/Footer";
 import HomeButton from "../components/HomeButton";
 import NavBar from '../components/NavBar';
@@ -17,10 +17,7 @@ function CardsPage() {
             />
             <TitleSection text='Cards'/>
             <ContentSection>
-                <CreditCardList />
-                <div className="flex-center">
-                    <button className="btn green">Add a new card</button>
-                </div>
+                <VaultedCardList />
             </ContentSection>
             <Footer />
         </div>
