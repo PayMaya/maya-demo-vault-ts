@@ -30,3 +30,26 @@ export const makeCardDefault = async (id: string, cardTokenId: string) => {
     const cards: CardDetails = response.data
     return cards
 }
+
+
+export const createCard = async (id: string, req: CreateCardRequest) => {
+    const headers = {
+        accept: 'application/json',
+        authorization: `Basic ${token}`,
+    }
+    
+    const response = await axios.post(`${mayaPaymentsUrl}/customers/${id}/cards`, req, { headers })
+    const CreatedCard: CreatedCard = response.data
+    return CreatedCard
+}
+
+export const createCardPayment = async (id: string, cardTokenId: string, req: CardPaymentRequest) => {
+    const headers = {
+        accept: 'application/json',
+        authorization: `Basic ${token}`,
+    }
+    
+    const response = await axios.post(`${mayaPaymentsUrl}/customers/${id}/cards/${cardTokenId}/payments`, req, { headers })
+    const cardPayment: CardPayment = response.data
+    return cardPayment
+}
