@@ -1,25 +1,15 @@
-// import { Card } from './Card'
 import { Dispatch } from 'redux';
 import { useDispatch } from "react-redux"
-import { getCardsThunk, makeCardDefaultThunk } from '../thunks/card';
+import { makeCardDefaultThunk } from '../thunks/card';
 import { useSelector } from 'react-redux';
 
-// interface CreditCardProps {
-//     card: CardDetails
-// }
-
-interface CreditCardProps extends CardDetails {
-
-}
-
-function CreditCard ({ cardTokenId, default: isDefault, cardType, first6, last4 }: CreditCardProps) {
+function CreditCard ({ cardTokenId, default: isDefault, cardType, first6, last4 }: CardDetails) {
     const mayaCustomerId: string = useSelector((state: AppState) => state.currentUser.mayaCustomerId)
 
     const dispatch: Dispatch<any> = useDispatch()
 
     const onMakeDefault = () => {
         dispatch(makeCardDefaultThunk(mayaCustomerId, cardTokenId))
-        dispatch(getCardsThunk(mayaCustomerId))
     }
     
     const status: React.ReactNode = isDefault ? 

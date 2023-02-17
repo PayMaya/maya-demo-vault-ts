@@ -29,6 +29,6 @@ export const makeCardDefault = async (id: string, cardTokenId: string) => {
     console.log(cardTokenId)
     
     const response = await axios.put(`${mayaPaymentsUrl}/customers/${id}/cards/${cardTokenId}`, req, { headers })
-    const cards: CardDetails[] = response.data
+    const cards: CardDetails = response.data
     return cards
 }

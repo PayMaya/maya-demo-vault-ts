@@ -13,7 +13,7 @@ export function getCardsFailed() {
     }
 }
 
-export function makeCardDefaultSuccessful(payload: CardDetails[]) {
+export function makeCardDefaultSuccessful(payload: CardDetails) {
     return {
         type: actionTypes.MAKE_CARD_DEFAULT_SUCCESSFUL,
         payload

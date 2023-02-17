@@ -13,5 +13,5 @@ interface CardDetails {
 
 interface GetCardsAction {
     type: string
-    payload: CardDetails[]
+    payload: any
 }
