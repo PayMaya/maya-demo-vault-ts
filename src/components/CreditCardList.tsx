@@ -32,7 +32,7 @@ function CreditCardList() {
                 {cards.map(function (card, index) {
                     return (
                         <div key={index}>
-                            <CreditCard card={card} />
+                            <CreditCard {...card} />
                         </div>
                     )
                 })}
