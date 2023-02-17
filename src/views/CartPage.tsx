@@ -17,7 +17,7 @@ function CartPage() {
       <TitleSection text='Your Cart'/>
       <ContentSection>
         <CartList />
-        <div className='cart-checkout'>
+        <div className='redirect-button'>
           <button className='btn green large'> Checkout </button>
         </div>
       </ContentSection>
