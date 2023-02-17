@@ -1,5 +1,7 @@
 import * as cardActionTypes from "./actions/card/actionTypes"
 import * as cartActionTypes from "./actions/cart/actionTypes"
+import * as paymentActionTypes from "./actions/payment/actionTypes"
+import * as uiActionTypes from "./actions/ui/addNewCardModal"
 
 const cards = (state: CardDetails[] = [], action: GetCardsAction): CardDetails[] => {
     switch (action.type) {
@@ -13,6 +15,26 @@ const cards = (state: CardDetails[] = [], action: GetCardsAction): CardDetails[]
         default:
           return state
     }
+}
+
+const paymentTokenId = (state: string = "", action: CreatePaymentTokenAction): string => {
+  switch (action.type) {
+    case paymentActionTypes.CREATE_PAYMENT_TOKEN_SUCCESSFUL:
+      const { payload } = action
+      return payload.paymentTokenId
+    default:
+      return state
+  }
+}
+
+const cardTokenId = (state: string = "", action: CreateCardAction): string => {
+  switch (action.type) {
+    case cardActionTypes.CREATE_CARD_SUCCESSFUL:
+      const { payload } = action
+      return payload.cardTokenId
+    default:
+      return state
+  }
 }
 
 const initCart: Cart = {
@@ -68,4 +90,16 @@ const defaultUser: User = {
     return state
   }
 
-export { cards, currentUser, cart }
+// UI STATES
+const addNewCardModalVisible = (state: boolean = false, action: { type: string }): boolean => {
+  switch (action.type) {
+    case uiActionTypes.SHOW_ADD_NEW_CARD_MODAL:
+      return true
+    case uiActionTypes.HIDE_ADD_NEW_CARD_MODAL:
+      return false
+    default:
+      return state
+  }
+}
+
+export { cards, paymentTokenId, cardTokenId, currentUser, cart, addNewCardModalVisible }

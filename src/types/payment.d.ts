@@ -14,3 +14,8 @@ interface PaymentTokenResponse {
     updatedAt: string
     issuer: string
 }
+
+interface CreatePaymentTokenAction {
+    type: string
+    payload: PaymentTokenResponse
+}

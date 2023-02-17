@@ -40,6 +40,11 @@ interface CreatedCard {
     verificationUrl: string
 }
 
+interface CreateCardAction {
+    type: string
+    payload: CreatedCard
+}
+
 interface CardPaymentRequest {
     totalAmount: {
         amount: number

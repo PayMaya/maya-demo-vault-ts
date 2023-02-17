@@ -25,3 +25,16 @@ export function makeCardDefaultFailed() {
         type: actionTypes.MAKE_CARD_DEFAULT_FAILED
     }
 }
+
+export function createCardSuccessful(payload: CreatedCard) {
+    return {
+        type: actionTypes.CREATE_CARD_SUCCESSFUL,
+        payload
+    }
+}
+
+export function createCardFailed() {
+    return {
+        type: actionTypes.CREATE_CARD_FAILED
+    }
+}
