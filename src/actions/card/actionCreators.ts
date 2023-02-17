@@ -13,15 +13,15 @@ export function getCardsFailed() {
     }
 }
 
-export function updateCardSuccessful(payload: CardDetails[]) {
+export function makeCardDefaultSuccessful(payload: CardDetails[]) {
     return {
-        type: actionTypes.UPDATE_CARD_SUCCESSFUL,
+        type: actionTypes.MAKE_CARD_DEFAULT_SUCCESSFUL,
         payload
     }
 }
 
-export function updateCardFailed() {
+export function makeCardDefaultFailed() {
     return {
-        type: actionTypes.UPDATE_CARD_FAILED
+        type: actionTypes.MAKE_CARD_DEFAULT_FAILED
     }
 }

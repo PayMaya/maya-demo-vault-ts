@@ -16,7 +16,7 @@ export const retrieveCards = async (id: string) => {
     return cards
 }
 
-export const updateCard = async (id: string, cardTokenId: string) => {
+export const makeCardDefault = async (id: string, cardTokenId: string) => {
     const headers = {
         accept: 'application/json',
         authorization: `Basic ${token}`,

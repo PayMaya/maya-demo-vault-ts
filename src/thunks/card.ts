@@ -1,5 +1,5 @@
-import { getCardsFailed, getCardsSuccessful, updateCardFailed, updateCardSuccessful } from "../actions/card/actionCreators";
-import { retrieveCards, updateCard } from "../services/cardService";
+import { getCardsFailed, getCardsSuccessful, makeCardDefaultFailed, makeCardDefaultSuccessful } from "../actions/card/actionCreators";
+import { retrieveCards, makeCardDefault } from "../services/cardService";
 
 export const getCardsThunk = (id: string) => {
     return async (dispatch: any) => {
@@ -13,13 +13,13 @@ export const getCardsThunk = (id: string) => {
     }
 }
 
-export const updateCardThunk = (id: string, cardTokenId: string) => {
+export const makeCardDefaultThunk = (id: string, cardTokenId: string) => {
     return async (dispatch: any) => {
         try {
-            const res = await updateCard(id, cardTokenId)
-            dispatch(updateCardSuccessful(res))
+            const res = await makeCardDefault(id, cardTokenId)
+            dispatch(makeCardDefaultSuccessful(res))
         } catch (err) {
-            dispatch(updateCardFailed())
+            dispatch(makeCardDefaultFailed())
             console.log(err)
         }
     }
