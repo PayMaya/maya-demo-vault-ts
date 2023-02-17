@@ -8,6 +8,7 @@ import HomeButton from '../components/HomeButton';
 import TitleSection from '../components/TitleSection';
 import ContentSection from '../components/ContentSection';
 import VaultedCardsButton from '../components/VaultedCardsButton';
+import RedirectButton from '../components/RedirectButton';
 
 function LandingPage() {
   return (
@@ -19,6 +20,9 @@ function LandingPage() {
       <TitleSection text="Products" />
       <ContentSection>
         <ProductList />
+        <div className='redirect-button'>
+          <RedirectButton display='View Cart' url='/cart' className='btn green large'/>
+        </div>
       </ContentSection>
       <Footer />
     </div>
