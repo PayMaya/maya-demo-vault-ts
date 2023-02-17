@@ -31,9 +31,7 @@ function VaultedCardList() {
                 </div>
                 {cards.map(function (card, index) {
                     return (
-                        <div key={index}>
-                            <VaultedCard {...card} />
-                        </div>
+                        <VaultedCard key={index} {...card} />
                     )
                 })}
             </>
