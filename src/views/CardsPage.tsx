@@ -1,7 +1,7 @@
-import CreditCardsButton from "../components/CreditCardsButton";
+import VaultedCardsButton from "../components/VaultedCardsButton";
 import CartSummaryButton from "../components/CartSummaryButton";
 import ContentSection from "../components/ContentSection";
-import CreditCardList from "../components/CreditCardList";
+import VaultedCardList from "../components/VaultedCardList";
 import Footer from "../components/Footer";
 import HomeButton from "../components/HomeButton";
 import NavBar from '../components/NavBar';
@@ -12,15 +12,12 @@ function CardsPage() {
     return (
         <div className='body'>
             <NavBar
-                left={<><HomeButton /><CreditCardsButton /></>}
+                left={<><HomeButton /><VaultedCardsButton /></>}
                 right={<><CartSummaryButton /><UserCard /></>}
             />
             <TitleSection text='Cards'/>
             <ContentSection>
-                <CreditCardList />
-                <div className="flex-center">
-                    <button className="btn green">Add a new card</button>
-                </div>
+                <VaultedCardList />
             </ContentSection>
             <Footer />
         </div>

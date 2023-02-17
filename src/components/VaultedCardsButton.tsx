@@ -5,7 +5,7 @@ interface HomeButtonProps {
     onClick?: MouseEventHandler
 }
 
-function CreditCardsButton({ onClick }: HomeButtonProps) {
+function VaultedCardsButton({ onClick }: HomeButtonProps) {
     return (
         <div className="button-container nav-bar-item">
             <RedirectButton display='Cards' url='/cards' className='btn' onClick={onClick} />
@@ -13,4 +13,4 @@ function CreditCardsButton({ onClick }: HomeButtonProps) {
     )
 }
 
-export default CreditCardsButton
+export default VaultedCardsButton

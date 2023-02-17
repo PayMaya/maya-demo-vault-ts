@@ -7,13 +7,13 @@ import UserCard from '../components/UserCard';
 import HomeButton from '../components/HomeButton';
 import TitleSection from '../components/TitleSection';
 import ContentSection from '../components/ContentSection';
-import CreditCardsButton from '../components/CreditCardsButton';
+import VaultedCardsButton from '../components/VaultedCardsButton';
 
 function LandingPage() {
   return (
     <div className='body'>
       <NavBar
-        left={<><HomeButton /><CreditCardsButton /></>}
+        left={<><HomeButton /><VaultedCardsButton /></>}
         right={<><CartSummaryButton /><UserCard /></>}
       />
       <TitleSection text="Products" />

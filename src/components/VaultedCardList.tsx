@@ -3,9 +3,9 @@ import { Dispatch } from 'redux';
 import { useDispatch } from "react-redux";
 import { useSelector } from 'react-redux';
 import { getCardsThunk } from '../thunks/card';
-import CreditCard from './CreditCard';
+import VaultedCard from './VaultedCard';
 
-function CreditCardList() {
+function VaultedCardList() {
     const cards: CardDetails[] = useSelector((state: AppState) => state.cards)
     const mayaCustomerId: string = useSelector((state: AppState) => state.currentUser.mayaCustomerId)
 
@@ -32,7 +32,7 @@ function CreditCardList() {
                 {cards.map(function (card, index) {
                     return (
                         <div key={index}>
-                            <CreditCard {...card} />
+                            <VaultedCard {...card} />
                         </div>
                     )
                 })}
@@ -41,4 +41,4 @@ function CreditCardList() {
     }
 }
 
-export default CreditCardList
+export default VaultedCardList
