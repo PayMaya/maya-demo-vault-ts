@@ -3,12 +3,12 @@ import config from '../config';
 import { Buffer } from 'buffer';
 
 const mayaPaymentsUrl: string = config.maya_payments.url
-const token: string = Buffer.from(`${config.maya_payments.pub_api_key}:`, 'binary').toString('base64')
+const pk: string = Buffer.from(`${config.maya_payments.pub_api_key}:`, 'binary').toString('base64')
 
 export const createPaymentToken = async (req: PaymentTokenRequest) => {
     const headers = {
         accept: 'application/json',
-        authorization: `Basic ${token}`,
+        authorization: `Basic ${pk}`,
     }
     
     const response = await axios.post(`${mayaPaymentsUrl}/payment-tokens`, req, { headers })
