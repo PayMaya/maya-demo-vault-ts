@@ -17,7 +17,7 @@ function VaultedCard ({ cardTokenId, default: isDefault, cardType, first6, last4
         <button className='btn green' onClick={() => onMakeDefault()}>Make default</button>
     
     return (
-        <div className='credit-card-container'>
+        <div className='add-new-card-container'>
             <div className='column'><p> {cardType} </p></div>
             <div className='column'><p> {`${first6}*****${last4}`} </p></div>
             <div className='column'>{status}</div>

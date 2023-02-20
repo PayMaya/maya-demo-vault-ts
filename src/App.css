@@ -277,7 +277,7 @@ p {
   font-weight: bold;
 }
 
-.credit-card-container {
+.add-new-card-container {
   font-family: "jeko-bold",sans-serif;
   display: flex;
   flex-wrap: wrap;
@@ -290,7 +290,7 @@ p {
   text-align: center; 
 }
 
-.credit-card-container .column {
+.add-new-card-container .column {
   width: 33.33%;
 }
 
@@ -344,7 +344,7 @@ p {
   text-align: center;
 }
 
-.credit-card-form {
+.add-new-card-form {
   font-family: "jeko-bold",sans-serif;
   display: flex;
   flex-wrap: wrap;
@@ -356,7 +356,7 @@ p {
   justify-content: center;
 }
 
-.credit-card-form input[type="text"], [type="number"] {
+.add-new-card-form input[type="text"], [type="number"] {
   font-family: "jeko-bold",sans-serif;
   background-color : #F4F5F5; 
   width: 90%;
@@ -368,14 +368,14 @@ p {
   outline: none;
 }
 
-.credit-card-form input[type="text"]:focus, input[type="number"]:focus {
+.add-new-card-form input[type="text"]:focus, input[type="number"]:focus {
   outline: none !important;
 }
 
-.credit-card-form.visible {
+.add-new-card-form.visible {
   display: block
 }
 
-.credit-card-form.hidden {
+.add-new-card-form.hidden {
   display: none
 }

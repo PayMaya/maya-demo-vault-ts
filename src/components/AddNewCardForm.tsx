@@ -8,7 +8,6 @@ import { hideAddNewCardModal } from "../actions/ui/addNewCardModal";
 import { createPaymentToken } from '../services/paymentService';
 import { createPaymentTokenSuccesful } from '../actions/payment/actionCreators';
 
-
 function AddNewCardForm () {
     const mayaCustomerId: string = useSelector((state: AppState) => state.currentUser.mayaCustomerId)
     
@@ -57,7 +56,7 @@ function AddNewCardForm () {
     }
 
     return (
-        <form className="credit-card-form" onSubmit={(e: React.SyntheticEvent) => onAddCard(e)}>
+        <form className="add-new-card-form" onSubmit={(e: React.SyntheticEvent) => onAddCard(e)}>
             <input type="number" name="cardNumber" placeholder="Card number" maxLength={16} />
             <input type="text" name="expDate" placeholder="Date (MM/YY)" maxLength={5} />
             <input type="number" name="cvc" placeholder="CVC" maxLength={3}/>
