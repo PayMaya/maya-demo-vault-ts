@@ -7,7 +7,8 @@ const cards = (state: CardDetails[] = [], action: GetCardsAction): CardDetails[]
         case cardActionTypes.GET_CARDS_SUCCESSFUL:
           const { payload } = action 
           payload.reverse()
-          return payload
+          const cardsList = payload.filter((card: CardDetails) => card.state === 'VERIFIED')
+          return cardsList
         case cardActionTypes.MAKE_CARD_DEFAULT_SUCCESSFUL:
           const { payload: defaultCard } = action
           const updatedCards = state.map((card) => card.cardTokenId === defaultCard.cardTokenId ? defaultCard : card);
