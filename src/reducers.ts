@@ -28,16 +28,6 @@ const paymentTokenId = (state: string = "", action: CreatePaymentTokenAction): s
   }
 }
 
-const cardTokenId = (state: string = "", action: CreateCardAction): string => {
-  switch (action.type) {
-    case cardActionTypes.CREATE_CARD_SUCCESSFUL:
-      const { payload } = action
-      return payload.cardTokenId
-    default:
-      return state
-  }
-}
-
 const initCart: Cart = {
   items: [],
   quantity: 0,
@@ -103,4 +93,4 @@ const addNewCardModalVisible = (state: boolean = false, action: { type: string }
   }
 }
 
-export { cards, paymentTokenId, cardTokenId, currentUser, cart, addNewCardModalVisible }
+export { cards, paymentTokenId, currentUser, cart, addNewCardModalVisible }
