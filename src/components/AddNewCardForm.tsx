@@ -1,16 +1,16 @@
 import { Dispatch } from 'redux';
 import { useDispatch } from "react-redux"
-// import { createPaymentTokenThunk } from "../thunks/payment";
 import { useSelector } from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
+import config from '../config';
 import { createCardThunk, getCardsThunk } from "../thunks/card";
 import { hideAddNewCardModal } from "../actions/ui/addNewCardModal";
 import { createPaymentToken } from '../services/paymentService';
 import { createPaymentTokenSuccesful } from '../actions/payment/actionCreators';
 
+
 function AddNewCardForm () {
     const mayaCustomerId: string = useSelector((state: AppState) => state.currentUser.mayaCustomerId)
-    // const paymentTokenId: string = useSelector((state: AppState) => state.paymentTokenId)
     
     const dispatch: Dispatch<any> = useDispatch()
 
@@ -34,13 +34,17 @@ function AddNewCardForm () {
         }
         const paymentToken: PaymentTokenResponse = await createPaymentToken(paymentTokenReq)
         dispatch(createPaymentTokenSuccesful(paymentToken))
-        // dispatch(createPaymentTokenThunk(paymentTokenReq))
 
         // STEP 2: CREATE CARD USING PAYMENT TOKEN ID
         const createCardReq: CreateCardRequest = {
             paymentTokenId: paymentToken.paymentTokenId,
             isDefault: true,
-            requestReferenceNumber: uuidv4()
+            requestReferenceNumber: uuidv4(),
+            redirectUrl: {
+                success: `${config.host_url}${config.path_prefix}/cards`,
+                failure: `${config.host_url}${config.path_prefix}/cards`,
+                cancel: `${config.host_url}${config.path_prefix}/cards`
+            }
         }
         console.log(createCardReq)
         dispatch(createCardThunk(mayaCustomerId, createCardReq))

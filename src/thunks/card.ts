@@ -30,6 +30,7 @@ export const createCardThunk = (id: string, req: CreateCardRequest) => {
         try {
             const res: CreatedCard = await createCard(id, req)
             dispatch(createCardSuccessful(res))
+            window.location.href = res.verificationUrl
         } catch (err) {
             dispatch(createCardFailed())
             console.log(err)
