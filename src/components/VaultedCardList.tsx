@@ -30,9 +30,11 @@ function VaultedCardList() {
                     <p>Status</p>
                 </div>
                 {cards.map(function (card, index) {
-                    return (
-                        <VaultedCard key={index} {...card} />
-                    )
+                    if (card.state === 'VERIFIED') {
+                        return (
+                            <VaultedCard key={index} {...card} />
+                        )
+                    }
                 })}
             </>
         )
