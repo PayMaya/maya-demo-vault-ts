@@ -23,6 +23,7 @@ function AddNewCardForm ({ onCloseModal }: AddNewCardFormProps) {
             cardNumber: { value: string }
             expDate: { value: string }
             cvc: { value: string }
+            isDefault: { checked: boolean }
         }
 
          // STEP 1: CREATE PAYMENT TOKEN
@@ -40,7 +41,7 @@ function AddNewCardForm ({ onCloseModal }: AddNewCardFormProps) {
         // STEP 2: CREATE CARD USING PAYMENT TOKEN ID
         const createCardReq: CreateCardRequest = {
             paymentTokenId: paymentToken.paymentTokenId,
-            isDefault: true,
+            isDefault: target.isDefault.checked,
             requestReferenceNumber: uuidv4(),
             redirectUrl: {
                 success: `${config.host_url}${config.path_prefix}/cards`,
@@ -62,7 +63,9 @@ function AddNewCardForm ({ onCloseModal }: AddNewCardFormProps) {
             <input type="number" name="cardNumber" placeholder="Card number" maxLength={16} />
             <input type="text" name="expDate" placeholder="Date (MM/YY)" maxLength={5} />
             <input type="number" name="cvc" placeholder="CVC" maxLength={3}/>
-            <button type="submit" className="btn green">Save</button>
+            <input type="checkbox" id="isDefault" name="isDefault" />
+            <label htmlFor='isDefault'> Set as default </label>
+                <button type="submit" className="btn green">Save</button>
         </form>
    )
 }
