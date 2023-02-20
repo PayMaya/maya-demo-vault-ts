@@ -4,7 +4,4 @@ interface AppState {
     cardTokenId: string
     cart: Cart
     currentUser: User
-
-    // UI STATE
-    addNewCardModalVisible: boolean
 }

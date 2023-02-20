@@ -1,7 +1,6 @@
 import * as cardActionTypes from "./actions/card/actionTypes"
 import * as cartActionTypes from "./actions/cart/actionTypes"
 import * as paymentActionTypes from "./actions/payment/actionTypes"
-import * as uiActionTypes from "./actions/ui/addNewCardModal"
 
 const cards = (state: CardDetails[] = [], action: GetCardsAction): CardDetails[] => {
     switch (action.type) {
@@ -81,16 +80,4 @@ const defaultUser: User = {
     return state
   }
 
-// UI STATES
-const addNewCardModalVisible = (state: boolean = false, action: { type: string }): boolean => {
-  switch (action.type) {
-    case uiActionTypes.SHOW_ADD_NEW_CARD_MODAL:
-      return true
-    case uiActionTypes.HIDE_ADD_NEW_CARD_MODAL:
-      return false
-    default:
-      return state
-  }
-}
-
-export { cards, paymentTokenId, currentUser, cart, addNewCardModalVisible }
+export { cards, paymentTokenId, currentUser, cart }

@@ -1,32 +1,28 @@
-import { Dispatch } from 'redux';
-import { useDispatch } from "react-redux"
+import { useState } from 'react';
 import AddNewCardForm from "./AddNewCardForm";
-import { hideAddNewCardModal, showAddNewCardModal } from '../actions/ui/addNewCardModal';
-import { useSelector } from 'react-redux';
 
 function AddNewCardModal () {
-    const addNewCardModalVisible: boolean = useSelector((state: AppState) => state.addNewCardModalVisible)
-    const dispatch: Dispatch<any> = useDispatch()
+    const [addNewCardModalVisible, setAddNewCardModalVisible] = useState(false)
 
-    const onOpen = () => {
-        dispatch(showAddNewCardModal())
+    const onOpenModal = () => {
+        setAddNewCardModalVisible(true)
     }
-    const onCancel = () => {
-        dispatch(hideAddNewCardModal())
+    const onCloseModal = () => {
+        setAddNewCardModalVisible(false)
     }
 
     return (
        <>
             <div className="flex-center">
-                <button className="btn green" onClick={() => onOpen()}>Add New Card</button>
+                <button className="btn green" onClick={() => onOpenModal()}>Add New Card</button>
             </div>
             <div className={`modal-wrapper ${addNewCardModalVisible ? 'modal-visible': 'modal-hidden'}`}>
                 <div className="modal">
                    <div className="modal-header">
-                        <span className="header" onClick={() => onCancel()}>&larr;</span>
+                        <span className="header" onClick={() => onCloseModal()}>&larr;</span>
                         <span className="header">Add a New Card</span>
                    </div>
-                    <AddNewCardForm />
+                    <AddNewCardForm onCloseModal={() => onCloseModal()} />
                 </div>
             </div>
        </>

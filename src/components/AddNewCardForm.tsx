@@ -4,11 +4,14 @@ import { useSelector } from "react-redux";
 import { v4 as uuidv4 } from 'uuid';
 import config from '../config';
 import { createCardThunk, getCardsThunk } from "../thunks/card";
-import { hideAddNewCardModal } from "../actions/ui/addNewCardModal";
 import { createPaymentToken } from '../services/paymentService';
 import { createPaymentTokenSuccesful } from '../actions/payment/actionCreators';
 
-function AddNewCardForm () {
+interface AddNewCardFormProps {
+    onCloseModal: () => void
+}
+
+function AddNewCardForm ({ onCloseModal }: AddNewCardFormProps) {
     const mayaCustomerId: string = useSelector((state: AppState) => state.currentUser.mayaCustomerId)
     
     const dispatch: Dispatch<any> = useDispatch()
@@ -51,8 +54,7 @@ function AddNewCardForm () {
         // STEP 3: REFRESH LIST OF CARDS
         dispatch(getCardsThunk(mayaCustomerId))
 
-        // CLOSE MODAL
-        dispatch(hideAddNewCardModal())
+        onCloseModal()
     }
 
     return (
