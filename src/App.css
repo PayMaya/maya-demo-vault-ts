@@ -277,7 +277,7 @@ p {
   font-weight: bold;
 }
 
-.add-new-card-container {
+.credit-card-container {
   font-family: "jeko-bold",sans-serif;
   display: flex;
   flex-wrap: wrap;
@@ -290,7 +290,7 @@ p {
   text-align: center; 
 }
 
-.add-new-card-container .column {
+.credit-card-container .column {
   width: 33.33%;
 }
 
