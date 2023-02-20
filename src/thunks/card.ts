@@ -1,10 +1,10 @@
 import { createCardFailed, createCardSuccessful, getCardsFailed, getCardsSuccessful, makeCardDefaultFailed, makeCardDefaultSuccessful } from "../actions/card/actionCreators";
 import { retrieveCards, makeCardDefault, createCard } from "../services/cardService";
 
-export const getCardsThunk = (id: string) => {
+export const getCardsThunk = (customerId: string) => {
     return async (dispatch: any) => {
         try {
-            const res = await retrieveCards(id)
+            const res = await retrieveCards(customerId)
             dispatch(getCardsSuccessful(res))
         } catch (err) {
             dispatch(getCardsFailed())
@@ -13,10 +13,10 @@ export const getCardsThunk = (id: string) => {
     }
 }
 
-export const makeCardDefaultThunk = (id: string, cardTokenId: string) => {
+export const makeCardDefaultThunk = (customerId: string, cardTokenId: string) => {
     return async (dispatch: any) => {
         try {
-            const res = await makeCardDefault(id, cardTokenId)
+            const res = await makeCardDefault(customerId, cardTokenId)
             dispatch(makeCardDefaultSuccessful(res))
         } catch (err) {
             dispatch(makeCardDefaultFailed())
@@ -25,10 +25,10 @@ export const makeCardDefaultThunk = (id: string, cardTokenId: string) => {
     }
 }
 
-export const createCardThunk = (id: string, req: CreateCardRequest) => {
+export const createCardThunk = (customerId: string, req: CreateCardRequest) => {
     return async (dispatch: any) => {
         try {
-            const res: CreatedCard = await createCard(id, req)
+            const res: CreatedCard = await createCard(customerId, req)
             dispatch(createCardSuccessful(res))
             window.location.href = res.verificationUrl
         } catch (err) {
