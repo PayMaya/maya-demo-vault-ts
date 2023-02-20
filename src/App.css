@@ -393,3 +393,48 @@ p {
 .add-new-card-form.hidden {
   display: none
 }
+
+.checkout-cards-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 70%;
+  margin:auto;
+  border: 2px solid #808080;
+  border-radius: 16px;
+}
+
+.checkout-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  column-gap: 5vw;
+  border-bottom: 2px solid #808080;
+}
+
+.checkout-card input {
+  margin-left: 3vw;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex: auto;
+}
+.card-type {
+  margin-right: 5vw;
+  margin-left:1.5vw;
+}
+.card-number {
+  display:flex;
+  margin-right: 15vw;
+}
+
+.add-new-card-checkout {
+  margin: auto;
+  display: flex;
+  flex: auto;
+  margin-left: 2.5vw;
+}
