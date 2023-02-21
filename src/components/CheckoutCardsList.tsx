@@ -13,18 +13,20 @@ export function CheckoutCardsList() {
         console.log(event.target.value);
         setSelectedCard(event.target.value);
     }
-    return ( 
-        <div className="checkout-cards-container" onChange={onChooseCard} >
+    return (
+        <>
+            <div className="checkout-cards-container" onChange={onChooseCard} >
             {cards.map(function (card, index) {
                 return (
                     <CheckoutCard key={index} {...card} />
                 )
             })}
-            <div className="add-new-card-checkout">
+            {/* <div className="add-new-card-checkout">
                 <input type="radio" id="new-card" value="0" name="card"/>
                 <label htmlFor="new-card">Use a different card</label>
             </div>
-            { selectedCard === "0" && <p> Hello!! </p> }
-        </div>
+            { selectedCard === "0" && <p> Hello!! </p> } */}
+            </div>
+        </>
     )
 }
