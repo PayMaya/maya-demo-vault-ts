@@ -1,6 +1,5 @@
 import { Dispatch } from 'redux';
-import { useDispatch } from "react-redux"
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux"
 import { v4 as uuidv4 } from 'uuid';
 import config from '../config';
 import { createCardThunk, getCardsThunk } from "../thunks/card";
