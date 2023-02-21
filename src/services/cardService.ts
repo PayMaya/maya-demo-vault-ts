@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 import config from '../config';
 import { Buffer } from 'buffer';
 
@@ -32,10 +33,21 @@ export const makeCardDefault = async (customerId: string, cardTokenId: string) =
 }
 
 
-export const createCard = async (customerId: string, req: CreateCardRequest) => {
+export const createCard = async (customerId: string, paymentTokenId: string, isDefault: boolean) => {
     const headers = {
         accept: 'application/json',
         authorization: `Basic ${secretAuth}`,
+    }
+
+    const req: CreateCardRequest = {
+        paymentTokenId,
+        isDefault,
+        requestReferenceNumber: uuidv4(),
+        redirectUrl: {
+            success: `${config.host_url}${config.path_prefix}/cards`,
+            failure: `${config.host_url}${config.path_prefix}/cards`,
+            cancel: `${config.host_url}${config.path_prefix}/cards`
+        }
     }
     
     const response = await axios.post(`${mayaPaymentsUrl}/customers/${customerId}/cards`, req, { headers })

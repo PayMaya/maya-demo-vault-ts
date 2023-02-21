@@ -1,5 +1,7 @@
 import { createCardFailed, createCardSuccessful, getCardsFailed, getCardsSuccessful, makeCardDefaultFailed, makeCardDefaultSuccessful } from "../actions/card/actionCreators";
+import { createPaymentTokenSuccesful } from "../actions/payment/actionCreators";
 import { retrieveCards, makeCardDefault, createCard } from "../services/cardService";
+import { createPaymentToken } from "../services/paymentService";
 
 export const getCardsThunk = (customerId: string) => {
     return async (dispatch: any) => {
@@ -25,11 +27,18 @@ export const makeCardDefaultThunk = (customerId: string, cardTokenId: string) =>
     }
 }
 
-export const createCardThunk = (customerId: string, req: CreateCardRequest) => {
+export const createCardThunk = (customerId: string, paymentTokenReq: PaymentTokenRequest, isDefault: boolean) => {
     return async (dispatch: any) => {
         try {
-            const res: CreatedCard = await createCard(customerId, req)
+            // create payment token
+            const paymentTokenRes: PaymentTokenResponse = await createPaymentToken(paymentTokenReq)
+            dispatch(createPaymentTokenSuccesful(paymentTokenRes))
+
+            // create card (pass customer id, payment token id, and default flag as parameters)
+            const res: CreatedCard = await createCard(customerId, paymentTokenRes.paymentTokenId, isDefault)
             dispatch(createCardSuccessful(res))
+
+            // redirect to verification link
             window.location.href = res.verificationUrl
         } catch (err) {
             dispatch(createCardFailed())

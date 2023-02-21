@@ -1,10 +1,6 @@
 import { Dispatch } from 'redux';
 import { useDispatch, useSelector } from "react-redux"
-import { v4 as uuidv4 } from 'uuid';
-import config from '../config';
 import { createCardThunk, getCardsThunk } from "../thunks/card";
-import { createPaymentToken } from '../services/paymentService';
-import { createPaymentTokenSuccesful } from '../actions/payment/actionCreators';
 
 interface AddNewCardFormProps {
     onCloseModal: () => void
@@ -25,7 +21,7 @@ function AddNewCardForm ({ onCloseModal }: AddNewCardFormProps) {
             isDefault: { checked: boolean }
         }
 
-         // STEP 1: CREATE PAYMENT TOKEN
+         // STEP 1: CREATE PAYMENT TOKEN REQUEST
         const paymentTokenReq: PaymentTokenRequest = {
             card: {
                 number: target.cardNumber.value,
@@ -34,22 +30,10 @@ function AddNewCardForm ({ onCloseModal }: AddNewCardFormProps) {
                 cvc: target.cvc.value
             }
         }
-        const paymentToken: PaymentTokenResponse = await createPaymentToken(paymentTokenReq)
-        dispatch(createPaymentTokenSuccesful(paymentToken))
+        const isDefault: boolean = target.isDefault.checked
 
-        // STEP 2: CREATE CARD USING PAYMENT TOKEN ID
-        const createCardReq: CreateCardRequest = {
-            paymentTokenId: paymentToken.paymentTokenId,
-            isDefault: target.isDefault.checked,
-            requestReferenceNumber: uuidv4(),
-            redirectUrl: {
-                success: `${config.host_url}${config.path_prefix}/cards`,
-                failure: `${config.host_url}${config.path_prefix}/cards`,
-                cancel: `${config.host_url}${config.path_prefix}/cards`
-            }
-        }
-        console.log(createCardReq)
-        dispatch(createCardThunk(mayaCustomerId, createCardReq))
+        // STEP 2: CREATE CARD - PASS CUSTOMER ID AND FORM VALUES PARAMETERS
+        dispatch(createCardThunk(mayaCustomerId, paymentTokenReq, isDefault))
         
         // STEP 3: REFRESH LIST OF CARDS
         dispatch(getCardsThunk(mayaCustomerId))
