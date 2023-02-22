@@ -16,6 +16,13 @@ interface GetCardsAction {
     payload: any
 }
 
+interface NewCardDetails {
+    number: string
+    expMonth: string
+    expYear: string
+    cvc: string
+    isDefault: boolean
+}
 
 interface CreateCardRequest {
     paymentTokenId: string,

@@ -27,14 +27,16 @@ export const makeCardDefaultThunk = (customerId: string, cardTokenId: string) =>
     }
 }
 
-export const createCardThunk = (customerId: string, paymentTokenReq: PaymentTokenRequest, isDefault: boolean) => {
+export const createCardThunk = (customerId: string, newCardDetails: NewCardDetails) => {
     return async (dispatch: any) => {
         try {
-            // create payment token
-            const paymentTokenRes: PaymentTokenResponse = await createPaymentToken(paymentTokenReq)
+            // STEP 1: CREATE PAYMENT TOKEN
+            const paymentTokenRes: PaymentTokenResponse = await createPaymentToken(newCardDetails)
             dispatch(createPaymentTokenSuccesful(paymentTokenRes))
 
-            // create card (pass customer id, payment token id, and default flag as parameters)
+            // STEP 2: CREATE CARD 
+            // pass customer id, payment token id, and default flag as parameters
+            const { isDefault } = newCardDetails
             const res: CreatedCard = await createCard(customerId, paymentTokenRes.paymentTokenId, isDefault)
             dispatch(createCardSuccessful(res))
 
