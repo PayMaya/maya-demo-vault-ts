@@ -1,7 +1,6 @@
 import { createPaymentTokenSuccesful, createPaymentTokenFailed, paymentSuccessful, paymentFailed, paymentCancelled } from "../actions/payment/actionCreators";
 import config from "../config";
-import { createCardPayment } from "../services/cardService";
-import { createPaymentToken } from "../services/paymentService";
+import { createPaymentToken, createCardPayment } from "../services/paymentService";
 import { v4 as uuidv4 } from 'uuid';
 import { Dispatch } from "redux";
 
