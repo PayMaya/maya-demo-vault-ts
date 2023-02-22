@@ -1,11 +1,14 @@
 import * as cardActionTypes from "./actions/card/actionTypes"
 import * as cartActionTypes from "./actions/cart/actionTypes"
+import * as paymentActionTypes from "./actions/payment/actionTypes"
 
 const cards = (state: CardDetails[] = [], action: GetCardsAction): CardDetails[] => {
     switch (action.type) {
         case cardActionTypes.GET_CARDS_SUCCESSFUL:
           const { payload } = action 
-          return payload
+          payload.reverse()
+          const cardsList = payload.filter((card: CardDetails) => card.state === 'VERIFIED')
+          return cardsList
         case cardActionTypes.MAKE_CARD_DEFAULT_SUCCESSFUL:
           const { payload: defaultCard } = action
           const updatedCards = state.map((card) => card.cardTokenId === defaultCard.cardTokenId ? defaultCard : card);
@@ -13,6 +16,16 @@ const cards = (state: CardDetails[] = [], action: GetCardsAction): CardDetails[]
         default:
           return state
     }
+}
+
+const paymentTokenId = (state: string = "", action: CreatePaymentTokenAction): string => {
+  switch (action.type) {
+    case paymentActionTypes.CREATE_PAYMENT_TOKEN_SUCCESSFUL:
+      const { payload } = action
+      return payload.paymentTokenId
+    default:
+      return state
+  }
 }
 
 const initCart: Cart = {
@@ -68,4 +81,4 @@ const defaultUser: User = {
     return state
   }
 
-export { cards, currentUser, cart }
+export { cards, paymentTokenId, currentUser, cart }

@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { Dispatch } from 'redux';
-import { useDispatch } from "react-redux";
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 import { getCardsThunk } from '../thunks/card';
 import VaultedCard from './VaultedCard';
 

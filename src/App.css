@@ -285,11 +285,111 @@ p {
   margin: 1vh 1vw;
   border: solid 1px #F4F5F5;
   background-color: #F4F5F5;
-  border-radius: 10px;
+  border-radius: 16px;
   justify-content: space-around;
   text-align: center; 
 }
 
 .credit-card-container .column {
   width: 33.33%;
+}
+
+/* MODAL */
+.modal-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  background: white;
+  border-radius: 16px;
+  padding: 30px 0px;
+  width: 95%;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  transition: all 5s;
+  z-index: 1;
+}
+
+.modal-header {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+}
+
+.modal-header .header {
+  margin-left: 5vw;
+  font-size: 1.5em;
+  font-family: "jeko-bold",sans-serif;
+}
+
+.modal-visible {
+  display: block;
+}
+
+.modal-hidden {
+  display: none;
+}
+
+.modal-title {
+  text-align: center;
+}
+
+.add-new-card-form {
+  font-family: "jeko-bold",sans-serif;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: 1vh 1vw;
+  border-radius: 16px;
+  border: solid 1px white;
+  background-color: white;
+  /* justify-content: center; */
+}
+
+.add-new-card-form input[type="text"], [type="number"] {
+  font-family: "jeko-bold",sans-serif;
+  background-color : #F4F5F5; 
+  width: 90%;
+  height: 6vh;
+  border-radius: 16px;
+  margin: 1vh 1vw;
+  padding: 10px 24px;
+  border: 0;
+  outline: none;
+}
+
+.add-new-card-form input[type="text"]:focus, input[type="number"]:focus {
+  outline: none !important;
+}
+
+.add-new-card-form input[type="checkbox"] {
+  accent-color : #00a651; 
+  margin-left: 3vw;
+}
+
+.add-new-card-form label {
+  font-family: "jeko-bold",sans-serif;
+  margin-left: 3vw;
+}
+
+.add-new-card-form button[type="submit"] {
+  margin: 1vh 40vw 0;
+}
+
+.add-new-card-form.visible {
+  display: block
+}
+
+.add-new-card-form.hidden {
+  display: none
 }

@@ -7,6 +7,7 @@ import HomeButton from "../components/HomeButton";
 import NavBar from '../components/NavBar';
 import TitleSection from "../components/TitleSection";
 import UserCard from "../components/UserCard";
+import AddNewCardModalButton from "../components/AddNewCardModalButton";
 
 function CardsPage() {
     return (
@@ -18,6 +19,7 @@ function CardsPage() {
             <TitleSection text='Cards'/>
             <ContentSection>
                 <VaultedCardList />
+                <AddNewCardModalButton />
             </ContentSection>
             <Footer />
         </div>
