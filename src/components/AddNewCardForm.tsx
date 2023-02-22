@@ -21,19 +21,17 @@ function AddNewCardForm ({ onCloseModal }: AddNewCardFormProps) {
             isDefault: { checked: boolean }
         }
 
-         // STEP 1: CREATE PAYMENT TOKEN REQUEST
-        const paymentTokenReq: PaymentTokenRequest = {
-            card: {
-                number: target.cardNumber.value,
-                expMonth: target.expDate.value.split('/')[0],
-                expYear: `20${target.expDate.value.split('/')[1]}`,
-                cvc: target.cvc.value
-            }
+        // STEP 1: COLLECT FORM VALUES
+        const newCardDetails: NewCardDetails = {
+            number: target.cardNumber.value,
+            expMonth: target.expDate.value.split('/')[0],
+            expYear: `20${target.expDate.value.split('/')[1]}`,
+            cvc: target.cvc.value,
+            isDefault: target.isDefault.checked
         }
-        const isDefault: boolean = target.isDefault.checked
 
-        // STEP 2: CREATE CARD - PASS CUSTOMER ID AND FORM VALUES PARAMETERS
-        dispatch(createCardThunk(mayaCustomerId, paymentTokenReq, isDefault))
+        // STEP 2: CREATE CARD - PASS NEW CARD DETAILS AS PARAMETER
+        dispatch(createCardThunk(mayaCustomerId, newCardDetails))
         
         // STEP 3: REFRESH LIST OF CARDS
         dispatch(getCardsThunk(mayaCustomerId))
