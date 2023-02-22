@@ -44,9 +44,9 @@ export const createCard = async (customerId: string, paymentTokenId: string, isD
         isDefault,
         requestReferenceNumber: uuidv4(),
         redirectUrl: {
-            success: `${config.host_url}${config.path_prefix}/cards`,
-            failure: `${config.host_url}${config.path_prefix}/cards`,
-            cancel: `${config.host_url}${config.path_prefix}/cards`
+            success: `${config.host_url}/cards`,
+            failure: `${config.host_url}/cards`,
+            cancel: `${config.host_url}/cards`
         }
     }
     
