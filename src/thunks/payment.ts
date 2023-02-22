@@ -1,7 +1,6 @@
 import { createPaymentTokenSuccesful, createPaymentTokenFailed, paymentSuccessful, paymentFailed, paymentCancelled } from "../actions/payment/actionCreators";
 import config from "../config";
 import { createPaymentToken, createCardPayment } from "../services/paymentService";
-import { v4 as uuidv4 } from 'uuid';
 import { Dispatch } from "redux";
 
 export function createPaymentTokenThunk (newCardDetails: NewCardDetails) {
@@ -19,22 +18,15 @@ export function createPaymentTokenThunk (newCardDetails: NewCardDetails) {
 export function payWithVaultedCardThunk(customerId:string, cardTokenId:string, totalAmount:number) {
     return async (dispatch:Dispatch) => {
         try {
-            const cardPaymentRequest:CardPaymentRequest = {
-                totalAmount: {
-                    amount: totalAmount,
-                    currency: 'PHP'
-                },
-                requestReferenceNumber: uuidv4()
-            }
-            const response = await createCardPayment(customerId,cardTokenId,cardPaymentRequest);
-            processPaymentResult(response.status,dispatch,cardPaymentRequest.requestReferenceNumber);
+            const { requestReferenceNumber, cardPayment } = await createCardPayment(customerId,cardTokenId,totalAmount);
+            processPaymentResult(cardPayment.status,requestReferenceNumber, dispatch);
         } catch (err) {
             console.log(err);
         }
     }
 }
 
-function processPaymentResult(result:string, dispatch:Dispatch, requestReferenceNumber:string) {
+function processPaymentResult(result:string, requestReferenceNumber:string, dispatch:Dispatch) {
     const redirectUrl = `${config.host_url}/purchase`;
     switch (result) {
         case 'PAYMENT_SUCCESS':
