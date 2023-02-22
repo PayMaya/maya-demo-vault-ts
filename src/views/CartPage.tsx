@@ -6,6 +6,7 @@ import UserCard from '../components/UserCard';
 import HomeButton from '../components/HomeButton';
 import ContentSection from '../components/ContentSection';
 import VaultedCardsButton from '../components/VaultedCardsButton';
+import { Link } from 'react-router-dom';
 
 function CartPage() {
   return (
@@ -18,7 +19,7 @@ function CartPage() {
       <ContentSection>
         <CartList />
         <div className='redirect-button'>
-          <button className='btn green large'> Checkout </button>
+          <Link className='btn green large' to="/checkout" > Checkout </Link>
         </div>
       </ContentSection>
       <Footer />

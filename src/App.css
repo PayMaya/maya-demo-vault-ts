@@ -73,6 +73,7 @@ p {
   cursor: pointer;
   border: none;
   background: none;
+  text-decoration: none;
   margin: 5px;
 }
 
@@ -394,22 +395,11 @@ p {
   display: none
 }
 
-.checkout-cards-container {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 70%;
-  margin:auto;
-  border: 2px solid #808080;
-  border-radius: 16px;
-}
-
 .checkout-card-list {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   column-gap: 5vw;
-  border-bottom: 2px solid #808080;
 }
 
 .checkout-card input {
@@ -429,22 +419,7 @@ p {
 }
 .card-number {
   display:flex;
-  margin-right: 15vw;
-}
-
-.add-new-card-checkout {
-  display: flex;
-  flex: auto;
-  justify-content: flex-start;
-  column-gap: 6.5vw;
-}
-
-#new-card {
-  margin-left: 3vw;
-}
-
-.add-new-card-checkout label {
-  margin-right: 15vw;
+  margin-right: 5vw;
 }
 
 .accordion-container {
@@ -467,13 +442,14 @@ p {
   overflow:scroll;
   max-height: 0;
   transition: all 0.2s;
+  justify-content: center;
 }
 .accordion-state:checked ~ .accordion-content {  
   max-height: 100vh;
 }
 
 .accordion-inner {
-  width: 100%;
+  width: 85%;
   padding: 3%;
 }
 

@@ -12,3 +12,21 @@ export function createPaymentTokenFailed() {
         type: actionTypes.CREATE_PAYMENT_TOKEN_FAILED
     }
 }
+
+export function paymentSuccessful() {
+    return {
+        type: actionTypes.PAYMENT_SUCESSFUL
+    }
+}
+
+export function paymentFailed() {
+    return {
+        type: actionTypes.PAYMENT_FAILED
+    }
+}
+
+export function paymentCancelled() {
+    return { 
+        type: actionTypes.PAYMENT_CANCELLED
+    }
+}

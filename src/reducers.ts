@@ -64,6 +64,7 @@ const cart = (state: Cart = initCart, action: CartAction): Cart => {
       updatedCart.totalAmount = updatedCart.items.map(items => items.totalPrice).reduce((a, b) => a + b, 0)
       
       return updatedCart
+    case paymentActionTypes.PAYMENT_SUCESSFUL:
     case cartActionTypes.CLEAR_CART:
       return initCart
     default:

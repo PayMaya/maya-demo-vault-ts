@@ -57,11 +57,6 @@ interface CardPaymentRequest {
         amount: number
         currency: string
     }
-    redirectUrl?: {
-        success?: string
-        failure?: string
-        cancel?: string
-    }
     requestReferenceNumber: string
     authorizationType?: string
     card?: {
