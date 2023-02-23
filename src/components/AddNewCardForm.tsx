@@ -1,13 +1,13 @@
 import { Dispatch } from 'redux';
 import { useDispatch, useSelector } from "react-redux"
-import { createCardThunk, getCardsThunk } from "../thunks/card";
+import { createCardThunk } from "../thunks/card";
 
 interface AddNewCardFormProps {
     onCloseModal: () => void
 }
 
 function AddNewCardForm ({ onCloseModal }: AddNewCardFormProps) {
-    const mayaCustomerId: string = useSelector((state: AppState) => state.currentUser.mayaCustomerId)
+    const currentUser: User = useSelector((state: AppState) => state.currentUser)
     
     const dispatch: Dispatch<any> = useDispatch()
 
@@ -31,10 +31,7 @@ function AddNewCardForm ({ onCloseModal }: AddNewCardFormProps) {
         }
 
         // STEP 2: CREATE CARD - PASS NEW CARD DETAILS AS PARAMETER
-        dispatch(createCardThunk(mayaCustomerId, newCardDetails))
-        
-        // STEP 3: REFRESH LIST OF CARDS
-        dispatch(getCardsThunk(mayaCustomerId))
+        dispatch(createCardThunk(currentUser, newCardDetails))
 
         onCloseModal()
     }
