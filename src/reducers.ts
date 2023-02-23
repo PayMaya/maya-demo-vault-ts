@@ -1,5 +1,6 @@
 import * as cardActionTypes from "./actions/card/actionTypes"
 import * as cartActionTypes from "./actions/cart/actionTypes"
+import * as customerActionTypes from "./actions/customer/actionTypes"
 import * as paymentActionTypes from "./actions/payment/actionTypes"
 
 const cards = (state: CardDetails[] = [], action: GetCardsAction): CardDetails[] => {
@@ -76,10 +77,17 @@ const defaultUser: User = {
     firstName: 'Anya',
     lastName: 'Forger',
     email: 'anyaforger@test.com',
-    mayaCustomerId: '5b3739ea-759d-47a2-b30c-9f5e2fb2faff'
+    mayaCustomerId: ''
   }
-  const currentUser = (state: User = defaultUser, action: CartAction): User => {
-    return state
+  const currentUser = (state: User = defaultUser, action: any): User => {
+    switch (action.type) {
+      case customerActionTypes.CREATE_CUSTOMER_SUCCESSFUL:
+        const { payload } = action
+        const updatedUser = { ...defaultUser, mayaCustomerId: payload.id }
+        return updatedUser
+      default:
+        return state
+    }
   }
 
 export { cards, paymentTokenId, currentUser, cart }
