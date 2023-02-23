@@ -44,24 +44,13 @@ export const createCard = async (customerId: string, paymentTokenId: string, isD
         isDefault,
         requestReferenceNumber: uuidv4(),
         redirectUrl: {
-            success: `${config.host_url}${config.path_prefix}/cards`,
-            failure: `${config.host_url}${config.path_prefix}/cards`,
-            cancel: `${config.host_url}${config.path_prefix}/cards`
+            success: `${config.host_url}/cards`,
+            failure: `${config.host_url}/cards`,
+            cancel: `${config.host_url}/cards`
         }
     }
     
     const response = await axios.post(`${mayaPaymentsUrl}/customers/${customerId}/cards`, req, { headers })
     const CreatedCard: CreatedCard = response.data
     return CreatedCard
-}
-
-export const createCardPayment = async (customerId: string, cardTokenId: string, req: CardPaymentRequest) => {
-    const headers = {
-        accept: 'application/json',
-        authorization: `Basic ${secretAuth}`,
-    }
-    
-    const response = await axios.post(`${mayaPaymentsUrl}/customers/${customerId}/cards/${cardTokenId}/payments`, req, { headers })
-    const cardPayment: CardPayment = response.data
-    return cardPayment
 }
