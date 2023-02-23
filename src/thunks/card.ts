@@ -34,7 +34,7 @@ export const createCardThunk = (currentUser: User, newCardDetails: NewCardDetail
         let { mayaCustomerId } = currentUser
         try {
             // STEP 1: IF NO MAYA CUSTOMER ID, CREATE CUSTOMER
-            if(mayaCustomerId === '') {
+            if(!mayaCustomerId) {
                 try {
                     const newCustomer: Customer = await createCustomer(currentUser)
                     mayaCustomerId = newCustomer.id
@@ -52,7 +52,7 @@ export const createCardThunk = (currentUser: User, newCardDetails: NewCardDetail
             // STEP 3: CREATE CARD 
             // pass customer id, payment token id, and default flag as parameters
             const { isDefault } = newCardDetails
-            const res: CreatedCard = await createCard(mayaCustomerId, paymentTokenRes.paymentTokenId, isDefault)
+            const res: CreatedCard = await createCard(mayaCustomerId!, paymentTokenRes.paymentTokenId, isDefault)
             dispatch(createCardSuccessful(res))
 
             // redirect to verification link

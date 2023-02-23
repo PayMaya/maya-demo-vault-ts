@@ -4,19 +4,19 @@ import * as customerActionTypes from "./actions/customer/actionTypes"
 import * as paymentActionTypes from "./actions/payment/actionTypes"
 
 const cards = (state: CardDetails[] = [], action: GetCardsAction): CardDetails[] => {
-    switch (action.type) {
-        case cardActionTypes.GET_CARDS_SUCCESSFUL:
-          const { payload } = action 
-          payload.reverse()
-          const cardsList = payload.filter((card: CardDetails) => card.state === 'VERIFIED')
-          return cardsList
-        case cardActionTypes.MAKE_CARD_DEFAULT_SUCCESSFUL:
-          const { payload: defaultCard } = action
-          const updatedCards = state.map((card) => card.cardTokenId === defaultCard.cardTokenId ? defaultCard : card);
-          return updatedCards 
-        default:
-          return state
-    }
+  switch (action.type) {
+    case cardActionTypes.GET_CARDS_SUCCESSFUL:
+      const { payload } = action 
+      payload.reverse()
+      const cardsList = payload.filter((card: CardDetails) => card.state === 'VERIFIED')
+      return cardsList
+    case cardActionTypes.MAKE_CARD_DEFAULT_SUCCESSFUL:
+      const { payload: defaultCard } = action
+      const updatedCards = state.map((card) => card.cardTokenId === defaultCard.cardTokenId ? defaultCard : card);
+      return updatedCards 
+    default:
+      return state
+  }
 }
 
 const paymentTokenId = (state: string = "", action: CreatePaymentTokenAction): string => {
@@ -74,20 +74,20 @@ const cart = (state: Cart = initCart, action: CartAction): Cart => {
 }
 
 const defaultUser: User = {
-    firstName: 'Anya',
-    lastName: 'Forger',
-    email: 'anyaforger@test.com',
-    mayaCustomerId: ''
+  firstName: 'Anya',
+  lastName: 'Forger',
+  email: 'anyaforger@test.com',
+  mayaCustomerId: null
+}
+const currentUser = (state: User = defaultUser, action: any): User => {
+  switch (action.type) {
+    case customerActionTypes.CREATE_CUSTOMER_SUCCESSFUL:
+      const { payload } = action
+      const updatedUser = { ...defaultUser, mayaCustomerId: payload.id }
+      return updatedUser
+    default:
+      return state
   }
-  const currentUser = (state: User = defaultUser, action: any): User => {
-    switch (action.type) {
-      case customerActionTypes.CREATE_CUSTOMER_SUCCESSFUL:
-        const { payload } = action
-        const updatedUser = { ...defaultUser, mayaCustomerId: payload.id }
-        return updatedUser
-      default:
-        return state
-    }
-  }
+}
 
 export { cards, paymentTokenId, currentUser, cart }
