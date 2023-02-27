@@ -3,6 +3,10 @@ import { useSelector } from "react-redux"
 import { Dispatch } from "redux"
 import { payWithVaultedCardThunk } from "../thunks/payment";
 
+interface VaultedCardCheckoutHtmlForm extends EventTarget {
+    card: { value: string }
+}
+
 export function CheckoutCardForm() {
     const mayaCustomerId: string = useSelector((state: AppState) => state.currentUser.mayaCustomerId!);
     const cart:Cart = useSelector((state:AppState) => state.cart);
@@ -12,9 +16,7 @@ export function CheckoutCardForm() {
 
     const onCheckoutWithSavedCard = async (event: React.SyntheticEvent) => {
         event.preventDefault();
-        const target = event.target as typeof event.target & {
-            card: { value: string }
-        }
+        const target = event.target as VaultedCardCheckoutHtmlForm;
 
         dispatch(payWithVaultedCardThunk(mayaCustomerId,target.card.value, cart.totalAmount))
     }
