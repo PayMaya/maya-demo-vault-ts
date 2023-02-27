@@ -19,19 +19,19 @@ function PayWithNewCardForm () {
     const onAddCard = async (e: React.SyntheticEvent) => {
         e.preventDefault()
        
-        const target = e.target as AddCardDetailsHtmlForm
+        const form = e.target as AddCardDetailsHtmlForm
 
         // STEP 1: COLLECT FORM VALUES
         const newCardDetails: NewCardDetails = {
-            number: target.cardNumber.value,
-            expMonth: target.expDate.value.split('/')[0],
-            expYear: `20${target.expDate.value.split('/')[1]}`,
-            cvc: target.cvc.value,
-            isDefault: target.isDefault.checked
+            number: form.cardNumber.value,
+            expMonth: form.expDate.value.split('/')[0],
+            expYear: `20${form.expDate.value.split('/')[1]}`,
+            cvc: form.cvc.value,
+            isDefault: form.isDefault.checked
         }
 
         // STEP 2: CREATE CARD - PASS NEW CARD DETAILS AS PARAMETER
-        dispatch(payWithNewCardThunk(currentUser, newCardDetails,target.saveCard.checked, cart.totalAmount))
+        dispatch(payWithNewCardThunk(currentUser, newCardDetails, form.saveCard.checked, cart.totalAmount))
     }
 
     return (

@@ -16,9 +16,9 @@ export function CheckoutCardForm() {
 
     const onCheckoutWithSavedCard = async (event: React.SyntheticEvent) => {
         event.preventDefault();
-        const target = event.target as VaultedCardCheckoutHtmlForm;
+        const form = event.target as VaultedCardCheckoutHtmlForm;
 
-        dispatch(payWithVaultedCardThunk(mayaCustomerId,target.card.value, cart.totalAmount))
+        dispatch(payWithVaultedCardThunk(mayaCustomerId, form.card.value, cart.totalAmount))
     }
 
     return (
