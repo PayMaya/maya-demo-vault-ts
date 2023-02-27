@@ -26,15 +26,22 @@ export function payWithVaultedCardThunk(customerId:string, cardTokenId:string, t
 }
 
 function processPaymentResult(result:string, requestReferenceNumber:string, dispatch:Dispatch) {
+    const payload: CreateCardPaymentPayload = {
+        redirectPath: ''
+    }
+
     switch (result) {
         case 'PAYMENT_SUCCESS':
-            dispatch(paymentSuccessful(`/purchase/success/?id=${requestReferenceNumber}`));
+            payload.redirectPath = `/purchase/success/?id=${requestReferenceNumber}`
+            dispatch(paymentSuccessful(payload));
             break;
         case 'PAYMENT_FAILED':
-            dispatch(paymentFailed(`/purchase/failed/?id=${requestReferenceNumber}`));
+            payload.redirectPath = `/purchase/failed/?id=${requestReferenceNumber}`
+            dispatch(paymentFailed(payload));
             break;
         case 'PAYMENT_CANCELLED':
-            dispatch(paymentCancelled(`/purchase/canceled/?id=${requestReferenceNumber}`));
+            payload.redirectPath =`/purchase/canceled/?id=${requestReferenceNumber}`
+            dispatch(paymentCancelled(payload));
             break;
         default:
             break;

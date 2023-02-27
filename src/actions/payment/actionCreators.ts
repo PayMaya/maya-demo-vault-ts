@@ -13,28 +13,28 @@ export function createPaymentTokenFailed() {
     }
 }
 
-export function paymentSuccessful(payload: string) {
+export function paymentSuccessful(payload: CreateCardPaymentPayload) {
     return {
         type: actionTypes.PAYMENT_SUCESSFUL,
         payload
     }
 }
 
-export function paymentFailed(payload: string) {
+export function paymentFailed(payload: CreateCardPaymentPayload) {
     return {
         type: actionTypes.PAYMENT_FAILED,
         payload
     }
 }
 
-export function paymentCancelled(payload: string) {
+export function paymentCancelled(payload: CreateCardPaymentPayload) {
     return { 
         type: actionTypes.PAYMENT_CANCELLED,
         payload
     }
 }
 
-export function paymentCleared(payload: string) {
+export function paymentCleared() {
     return { 
         type: actionTypes.PAYMENT_CLEARED,
     }

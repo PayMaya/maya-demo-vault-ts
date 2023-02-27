@@ -8,13 +8,13 @@ interface PostPaymentRedirectProps {
 }
 
 function PostPaymentRoute({ children }: PostPaymentRedirectProps) {
-    const postPaymentRedirectUrl: string | null = useSelector((state: AppState) => state.postPaymentRedirectUrl)
-    const redirectUrl: string | null = postPaymentRedirectUrl
+    const postPaymentRedirectUrl: string = useSelector((state: AppState) => state.postPaymentRedirectUrl)
+    const redirectUrl: string = postPaymentRedirectUrl
 
     const dispatch: Dispatch<any> = useDispatch()
 
     if (redirectUrl) {
-        dispatch(paymentCleared(''))
+        dispatch(paymentCleared())
         return ( <Navigate to={redirectUrl} replace={true} /> ) 
     } else {
         return ( children )

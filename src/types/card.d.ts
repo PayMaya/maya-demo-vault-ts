@@ -86,7 +86,11 @@ interface CardPayment {
     verificationUrl?: string
 }
 
+interface CreateCardPaymentPayload {
+    redirectPath: string
+}
+
 interface CreateCardPaymentAction {
     type: string
-    payload: string // redirect url
+    payload?: CreateCardPaymentPayload
 }

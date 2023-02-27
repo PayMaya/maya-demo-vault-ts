@@ -4,5 +4,5 @@ interface AppState {
     cardTokenId: string
     cart: Cart
     currentUser: User
-    postPaymentRedirectUrl: string | null
+    postPaymentRedirectUrl: string
 }

@@ -88,7 +88,10 @@ export const payWithNewCardThunk = (currentUser: User, newCardDetails: NewCardDe
             }
             window.location.href = paymentResponse.cardPayment.verificationUrl! 
         } catch (err) {
-            dispatch(paymentFailed(`/purchase/failed`))
+            const payload: CreateCardPaymentPayload = {
+                redirectPath: `/purchase/failed`
+            }
+            dispatch(paymentFailed(payload));
             console.log(err)
         }
     }
