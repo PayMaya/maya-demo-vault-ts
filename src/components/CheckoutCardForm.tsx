@@ -27,10 +27,10 @@ export function CheckoutCardForm() {
                 { cards.map((card,index) => {
                     return (
                         <div className="checkout-card" key={index}>
-                            <input className="checkout-card-input" type="radio" value={card.cardTokenId} name="card"/>
+                            <input className="checkout-card-input" type="radio" value={card.cardTokenId} name="card" id={`input-${index}`}/>
                             <div className="card-info">
                                 <div className='card-type'>
-                                    <p> {card.cardType.toUpperCase()} </p>
+                                    <label htmlFor={`input-${index}`}> {card.cardType.toUpperCase()} </label>
                                 </div>
                                 <div className='card-number'>
                                     <p> {`${card.first6}*****${card.last4}`} </p>

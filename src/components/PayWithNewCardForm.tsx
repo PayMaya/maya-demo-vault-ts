@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import { useDispatch, useSelector } from "react-redux"
-import { createCardThunk, payWithNewCardThunk } from "../thunks/card";
+import { payWithNewCardThunk } from "../thunks/card";
 
 interface AddCardDetailsHtmlForm extends EventTarget {
     cardNumber: { value: string }
