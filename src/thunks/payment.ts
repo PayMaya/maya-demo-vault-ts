@@ -1,5 +1,4 @@
 import { createPaymentTokenSuccesful, createPaymentTokenFailed, paymentSuccessful, paymentFailed, paymentCancelled } from "../actions/payment/actionCreators";
-import config from "../config";
 import { createPaymentToken, createCardPayment } from "../services/paymentService";
 import { Dispatch } from "redux";
 
@@ -27,19 +26,15 @@ export function payWithVaultedCardThunk(customerId:string, cardTokenId:string, t
 }
 
 function processPaymentResult(result:string, requestReferenceNumber:string, dispatch:Dispatch) {
-    const redirectUrl = `${config.host_url}/purchase`;
     switch (result) {
         case 'PAYMENT_SUCCESS':
-            window.location.href = `${redirectUrl}/success/?id=${requestReferenceNumber}`;
-            dispatch(paymentSuccessful());
+            dispatch(paymentSuccessful(`/purchase/success/?id=${requestReferenceNumber}`));
             break;
         case 'PAYMENT_FAILED':
-            window.location.href = `${redirectUrl}/failed/?id=${requestReferenceNumber}`;
-            dispatch(paymentFailed());
+            dispatch(paymentFailed(`/purchase/failed/?id=${requestReferenceNumber}`));
             break;
         case 'PAYMENT_CANCELLED':
-            window.location.href = `${redirectUrl}/canceled/?id=${requestReferenceNumber}`;
-            dispatch(paymentCancelled());
+            dispatch(paymentCancelled(`/purchase/canceled/?id=${requestReferenceNumber}`));
             break;
         default:
             break;

@@ -90,4 +90,18 @@ const currentUser = (state: User = defaultUser, action: any): User => {
   }
 }
 
-export { cards, paymentTokenId, currentUser, cart }
+const postPaymentRedirectUrl = (state: string | null = null, action: CreateCardPaymentAction): string | null => {
+  const { payload } = action
+  switch (action.type) {
+    case paymentActionTypes.PAYMENT_SUCESSFUL:
+    case paymentActionTypes.PAYMENT_FAILED:
+    case paymentActionTypes.PAYMENT_CANCELLED:
+      return payload
+    case paymentActionTypes.PAYMENT_CLEARED:
+      return null
+    default:
+      return state
+  }
+}
+
+export { cards, paymentTokenId, currentUser, cart, postPaymentRedirectUrl }

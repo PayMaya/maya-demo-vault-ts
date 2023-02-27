@@ -79,3 +79,8 @@ interface CardPayment {
     description?: string
     paymentTokenId?: string
 }
+
+interface CreateCardPaymentAction {
+    type: string
+    payload: string // redirect url
+}
