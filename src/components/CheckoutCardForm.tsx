@@ -4,7 +4,7 @@ import { Dispatch } from "redux"
 import { payWithVaultedCardThunk } from "../thunks/payment";
 
 export function CheckoutCardForm() {
-    const mayaCustomerId: string = useSelector((state: AppState) => state.currentUser.mayaCustomerId);
+    const mayaCustomerId: string = useSelector((state: AppState) => state.currentUser.mayaCustomerId!);
     const cart:Cart = useSelector((state:AppState) => state.cart);
     const cards: CardDetails[] = useSelector((state: AppState) => state.cards)
 

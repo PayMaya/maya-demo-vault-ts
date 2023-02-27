@@ -6,7 +6,7 @@ import VaultedCard from './VaultedCard';
 
 function VaultedCardList() {
     const cards: CardDetails[] = useSelector((state: AppState) => state.cards)
-    const mayaCustomerId: string = useSelector((state: AppState) => state.currentUser.mayaCustomerId)
+    const mayaCustomerId: string = useSelector((state: AppState) => state.currentUser.mayaCustomerId!)
 
     const dispatch: Dispatch<any> = useDispatch()
 
