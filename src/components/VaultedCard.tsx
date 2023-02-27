@@ -1,7 +1,6 @@
 import { Dispatch } from 'redux';
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { makeCardDefaultThunk } from '../thunks/card';
-import { useSelector } from 'react-redux';
 
 function VaultedCard ({ cardTokenId, default: isDefault, cardType, first6, last4 }: CardDetails) {
     const mayaCustomerId: string = useSelector((state: AppState) => state.currentUser.mayaCustomerId!)
