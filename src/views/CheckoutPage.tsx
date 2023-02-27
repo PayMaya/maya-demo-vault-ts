@@ -4,6 +4,7 @@ import ContentSection from "../components/ContentSection"
 import Footer from "../components/Footer"
 import HomeButton from "../components/HomeButton"
 import NavBar from "../components/NavBar"
+import PayWithNewCardForm from "../components/PayWithNewCardForm"
 import TitleSection from "../components/TitleSection"
 import UserCard from "../components/UserCard"
 
@@ -17,9 +18,7 @@ export function CheckoutPage() {
                 <CheckoutCardForm/>
             </Accordion>
             <Accordion header="Use a different card" group="checkout" index={"2"}>
-                <div>
-                    <p> USE A DIFFERENT CARD HERE </p> 
-                </div>
+               <PayWithNewCardForm/>
             </Accordion>
         </ContentSection>
         <Footer/>

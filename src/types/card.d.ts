@@ -61,6 +61,11 @@ interface CardPaymentRequest {
     authorizationType?: string
     card?: {
         cvc: string
+    },
+    redirectUrl?: {
+        success: string,
+        failure: string,
+        cancel: string
     }
 }
 
@@ -77,7 +82,8 @@ interface CardPayment {
     updatedAt: string
     requestReferenceNumber?: string
     description?: string
-    paymentTokenId?: string
+    paymentTokenId?: string,
+    verificationUrl?: string
 }
 
 interface CreateCardPaymentAction {
