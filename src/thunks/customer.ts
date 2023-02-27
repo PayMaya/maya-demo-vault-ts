@@ -6,6 +6,7 @@ export function createCustomerThunk (user: User) {
         try {
             const res: Customer = await createCustomer(user)
             dispatch(createCustomerSuccesful(res))
+            return res.id;
         } catch (err) {
             dispatch(createCustomerFailed())
             console.log(err)

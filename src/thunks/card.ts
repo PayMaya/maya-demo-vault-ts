@@ -1,9 +1,11 @@
+import { Dispatch } from "redux";
 import { createCardFailed, createCardSuccessful, getCardsFailed, getCardsSuccessful, makeCardDefaultFailed, makeCardDefaultSuccessful } from "../actions/card/actionCreators";
 import { createCustomerFailed, createCustomerSuccesful } from "../actions/customer/actionCreators";
-import { createPaymentTokenSuccesful } from "../actions/payment/actionCreators";
+import { createPaymentTokenSuccesful, paymentFailed } from "../actions/payment/actionCreators";
 import { retrieveCards, makeCardDefault, createCard } from "../services/cardService";
 import { createCustomer } from "../services/customerService";
-import { createPaymentToken } from "../services/paymentService";
+import { createCardPayment, createOneTimePayment, createPaymentToken } from "../services/paymentService";
+import { createCustomerThunk } from "./customer";
 
 export const getCardsThunk = (customerId: string) => {
     return async (dispatch: any) => {
@@ -59,6 +61,34 @@ export const createCardThunk = (currentUser: User, newCardDetails: NewCardDetail
             window.location.href = res.verificationUrl
         } catch (err) {
             dispatch(createCardFailed())
+            console.log(err)
+        }
+    }
+}
+
+export const payWithNewCardThunk = (currentUser: User, newCardDetails: NewCardDetails, saveCard: boolean, totalAmount: number) => {
+    return async (dispatch: Dispatch) => {
+        let { mayaCustomerId } = currentUser
+        try {
+            const paymentTokenRes: PaymentTokenResponse = await createPaymentToken(newCardDetails);
+            const { paymentTokenId } = paymentTokenRes;
+            dispatch(createPaymentTokenSuccesful(paymentTokenRes))
+
+            let paymentResponse;
+            if(saveCard) {
+                if(!mayaCustomerId) {
+                    mayaCustomerId = await createCustomerThunk(currentUser)(dispatch);
+                }
+
+                const { isDefault } = newCardDetails;
+                await createCard(mayaCustomerId!, paymentTokenId, isDefault);
+                paymentResponse = await createCardPayment(mayaCustomerId!,paymentTokenId, totalAmount);
+            } else {
+                paymentResponse = await createOneTimePayment(paymentTokenId, totalAmount);
+            }
+            window.location.href = paymentResponse.cardPayment.verificationUrl! 
+        } catch (err) {
+            dispatch(paymentFailed())
             console.log(err)
         }
     }

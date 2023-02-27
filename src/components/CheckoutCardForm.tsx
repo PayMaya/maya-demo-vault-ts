@@ -3,6 +3,10 @@ import { useSelector } from "react-redux"
 import { Dispatch } from "redux"
 import { payWithVaultedCardThunk } from "../thunks/payment";
 
+interface VaultedCardCheckoutForm extends EventTarget {
+    card: { value: string }
+}
+
 export function CheckoutCardForm() {
     const mayaCustomerId: string = useSelector((state: AppState) => state.currentUser.mayaCustomerId!);
     const cart:Cart = useSelector((state:AppState) => state.cart);
@@ -12,9 +16,7 @@ export function CheckoutCardForm() {
 
     const onCheckoutWithSavedCard = async (event: React.SyntheticEvent) => {
         event.preventDefault();
-        const target = event.target as typeof event.target & {
-            card: { value: string }
-        }
+        const target = event.target as VaultedCardCheckoutForm
 
         dispatch(payWithVaultedCardThunk(mayaCustomerId,target.card.value, cart.totalAmount))
     }
@@ -25,10 +27,10 @@ export function CheckoutCardForm() {
                 { cards.map((card,index) => {
                     return (
                         <div className="checkout-card" key={index}>
-                            <input className="checkout-card-input" type="radio" value={card.cardTokenId} name="card"/>
+                            <input className="checkout-card-input" type="radio" value={card.cardTokenId} name="card" id={`input-${index}`}/>
                             <div className="card-info">
                                 <div className='card-type'>
-                                    <p> {card.cardType.toUpperCase()} </p>
+                                    <label htmlFor={`input-${index}`}> {card.cardType.toUpperCase()} </label>
                                 </div>
                                 <div className='card-number'>
                                     <p> {`${card.first6}*****${card.last4}`} </p>
