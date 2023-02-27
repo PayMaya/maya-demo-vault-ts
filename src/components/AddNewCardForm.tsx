@@ -6,6 +6,13 @@ interface AddNewCardFormProps {
     onCloseModal: () => void
 }
 
+interface AddNewCardHtmlForm extends EventTarget {
+    cardNumber: { value: string }
+    expDate: { value: string }
+    cvc: { value: string }
+    isDefault: { checked: boolean }
+}
+
 function AddNewCardForm ({ onCloseModal }: AddNewCardFormProps) {
     const currentUser: User = useSelector((state: AppState) => state.currentUser)
     
@@ -14,12 +21,7 @@ function AddNewCardForm ({ onCloseModal }: AddNewCardFormProps) {
     const onAddCard = async (e: React.SyntheticEvent) => {
         e.preventDefault()
        
-        const target = e.target as typeof e.target & {
-            cardNumber: { value: string }
-            expDate: { value: string }
-            cvc: { value: string }
-            isDefault: { checked: boolean }
-        }
+        const target = e.target as AddNewCardHtmlForm
 
         // STEP 1: COLLECT FORM VALUES
         const newCardDetails: NewCardDetails = {
