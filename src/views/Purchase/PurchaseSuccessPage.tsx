@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import { Dispatch } from 'redux';
 import { useDispatch } from "react-redux"
 import { clearCartThunk } from '../../thunks/cart';
+import { paymentCleared } from '../../actions/payment/actionCreators';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 import TitleSection from '../../components/TitleSection';
@@ -12,10 +14,15 @@ import VaultedCardsButton from '../../components/VaultedCardsButton';
 function PurchaseSuccessPage() {
   const dispatch: Dispatch<any> = useDispatch()
 
+  useEffect(() => {
+    dispatch(clearCartThunk())
+    dispatch(paymentCleared())
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <div className='body'>
       <NavBar
-        left={<><HomeButton onClick={() => dispatch(clearCartThunk())} /> <VaultedCardsButton/> </>}
+        left={<><HomeButton /><VaultedCardsButton/> </>}
         right={<UserCard />}
       />
       <TitleSection text='Purchase successful!' />
