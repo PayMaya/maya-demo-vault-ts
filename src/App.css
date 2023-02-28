@@ -393,6 +393,10 @@ p {
   display: none
 }
 
+.label-default {
+  color: gray;
+}
+
 .new-card-checkout {
   display: flex;
   justify-content: center;

@@ -47,7 +47,7 @@ function PayWithNewCardForm () {
                     <label htmlFor='saveCard'> Remember this card </label>
                     <div>
                         <input type="checkbox" id="isDefault" name="isDefault" defaultChecked disabled />
-                        <label htmlFor='isDefault'> Set as default </label>
+                        <label className="label-default" htmlFor='isDefault'> Set as default </label>
                     </div>
                 </div>
             </div>
