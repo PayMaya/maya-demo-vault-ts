@@ -53,8 +53,7 @@ export const createCardThunk = (currentUser: User, newCardDetails: NewCardDetail
 
             // STEP 3: CREATE CARD 
             // pass customer id, payment token id, and default flag as parameters
-            const { isDefault } = newCardDetails
-            const res: CreatedCard = await createCard(mayaCustomerId!, paymentTokenRes.paymentTokenId, isDefault)
+            const res: CreatedCard = await createCard(mayaCustomerId!, paymentTokenRes.paymentTokenId)
             dispatch(createCardSuccessful(res))
 
             // redirect to verification link
@@ -80,8 +79,7 @@ export const payWithNewCardThunk = (currentUser: User, newCardDetails: NewCardDe
                     mayaCustomerId = await createCustomerThunk(currentUser)(dispatch);
                 }
 
-                const { isDefault } = newCardDetails;
-                await createCard(mayaCustomerId!, paymentTokenId, isDefault);
+                await createCard(mayaCustomerId!, paymentTokenId);
                 paymentResponse = await createCardPayment(mayaCustomerId!,paymentTokenId, totalAmount);
             } else {
                 paymentResponse = await createOneTimePayment(paymentTokenId, totalAmount);

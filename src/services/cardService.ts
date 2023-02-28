@@ -33,7 +33,7 @@ export const makeCardDefault = async (customerId: string, cardTokenId: string) =
 }
 
 
-export const createCard = async (customerId: string, paymentTokenId: string, isDefault: boolean) => {
+export const createCard = async (customerId: string, paymentTokenId: string, isDefault: boolean = true) => {
     const headers = {
         accept: 'application/json',
         authorization: `Basic ${secretAuth}`,

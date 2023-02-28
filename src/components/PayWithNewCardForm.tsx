@@ -27,7 +27,7 @@ function PayWithNewCardForm () {
             expMonth: form.expDate.value.split('/')[0],
             expYear: `20${form.expDate.value.split('/')[1]}`,
             cvc: form.cvc.value,
-            isDefault: form.isDefault.checked
+            isDefault: true
         }
 
         // STEP 2: CREATE CARD - PASS NEW CARD DETAILS AS PARAMETER
@@ -36,15 +36,24 @@ function PayWithNewCardForm () {
 
     return (
         <form className="add-new-card-form" onSubmit={(e: React.SyntheticEvent) => onAddCard(e)}>
-            <input type="number" name="cardNumber" placeholder="Card number" maxLength={16} />
-            <input type="text" name="expDate" placeholder="Date (MM/YY)" maxLength={5} />
-            <input type="number" name="cvc" placeholder="CVC" maxLength={3}/>
-            <input type="checkbox" id="isDefault" name="isDefault" />
-            <label htmlFor='isDefault'> Set as default </label>
-            <br/>
-            <input type="checkbox" id="saveCard" name="saveCard" />
-            <label htmlFor='saveCard'> Remember this card </label>
-                <button type="submit" className="btn green">Checkout</button>
+            <div>
+                <div className='new-card-info'>
+                    <input type="number" name="cardNumber" placeholder="Card Number" maxLength={16} />
+                    <input type="text" name="expDate" placeholder="Date (MM/YY)" maxLength={5} />
+                    <input type="number" name="cvc" placeholder="CVC" maxLength={3}/>
+                </div>
+                <div className='new-card-settings'>
+                    <input type="checkbox" id="saveCard" name="saveCard"/>
+                    <label htmlFor='saveCard'> Remember this card </label>
+                    <div>
+                        <input type="checkbox" id="isDefault" name="isDefault" defaultChecked disabled />
+                        <label htmlFor='isDefault'> Set as default </label>
+                    </div>
+                </div>
+            </div>
+            <div className='new-card-checkout'>
+                <button type="submit" className="btn green large">Checkout</button>
+            </div>
         </form>
    )
 }
