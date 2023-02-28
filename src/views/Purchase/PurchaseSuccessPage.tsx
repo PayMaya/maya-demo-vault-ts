@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Dispatch } from 'redux';
 import { useDispatch } from "react-redux"
 import { clearCartThunk } from '../../thunks/cart';
@@ -12,10 +13,14 @@ import VaultedCardsButton from '../../components/VaultedCardsButton';
 function PurchaseSuccessPage() {
   const dispatch: Dispatch<any> = useDispatch()
 
+  useEffect(() => {
+    dispatch(clearCartThunk())
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <div className='body'>
       <NavBar
-        left={<><HomeButton onClick={() => dispatch(clearCartThunk())} /> <VaultedCardsButton/> </>}
+        left={<><HomeButton /><VaultedCardsButton/> </>}
         right={<UserCard />}
       />
       <TitleSection text='Purchase successful!' />
