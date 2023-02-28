@@ -13,20 +13,29 @@ export function createPaymentTokenFailed() {
     }
 }
 
-export function paymentSuccessful() {
+export function paymentSuccessful(payload: CreateCardPaymentPayload) {
     return {
-        type: actionTypes.PAYMENT_SUCESSFUL
+        type: actionTypes.PAYMENT_SUCESSFUL,
+        payload
     }
 }
 
-export function paymentFailed() {
+export function paymentFailed(payload: CreateCardPaymentPayload) {
     return {
-        type: actionTypes.PAYMENT_FAILED
+        type: actionTypes.PAYMENT_FAILED,
+        payload
     }
 }
 
-export function paymentCancelled() {
+export function paymentCancelled(payload: CreateCardPaymentPayload) {
     return { 
-        type: actionTypes.PAYMENT_CANCELLED
+        type: actionTypes.PAYMENT_CANCELLED,
+        payload
+    }
+}
+
+export function paymentCleared() {
+    return { 
+        type: actionTypes.PAYMENT_CLEARED,
     }
 }

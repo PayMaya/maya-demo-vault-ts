@@ -35,8 +35,8 @@ export const createCardPayment = async (customerId: string, cardTokenId: string,
         requestReferenceNumber,
         redirectUrl: {
             success: `${redirectUrl}/success/?id=${requestReferenceNumber}`,
-            failure: `${redirectUrl}/failure/?id=${requestReferenceNumber}`,
-            cancel: `${redirectUrl}/success/?id=${requestReferenceNumber}`
+            failure: `${redirectUrl}/failed/?id=${requestReferenceNumber}`,
+            cancel: `${redirectUrl}/canceled/?id=${requestReferenceNumber}`
         }
     }
     const response = await axios.post(`${mayaPaymentsUrl}/customers/${customerId}/cards/${cardTokenId}/payments`, cardPaymentRequest, { headers })
@@ -59,8 +59,8 @@ export const createOneTimePayment = async (cardTokenId: string, totalAmount: num
         requestReferenceNumber,
         redirectUrl: {
             success: `${redirectUrl}/success/?id=${requestReferenceNumber}`,
-            failure: `${redirectUrl}/failure/?id=${requestReferenceNumber}`,
-            cancel: `${redirectUrl}/success/?id=${requestReferenceNumber}`
+            failure: `${redirectUrl}/failed/?id=${requestReferenceNumber}`,
+            cancel: `${redirectUrl}/canceled/?id=${requestReferenceNumber}`
         }
     }
     const response = await axios.post(`${mayaPaymentsUrl}/payments`, cardPaymentRequest, { headers })
