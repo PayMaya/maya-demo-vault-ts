@@ -38,7 +38,7 @@ function renderCardList(cards: CardDetails[]) {
     return cards.map((card,index) => {
         return (
             <div className="checkout-card" key={index}>
-                <input className="checkout-card-input" type="radio" value={card.cardTokenId} name="card" id={`input-${index}`}/>
+                <input className="checkout-card-input" type="radio" value={card.cardTokenId} name="card" id={`input-${index}`} checked={card.default}/>
                 <div className="card-info">
                     <div className='card-type'>
                         <label htmlFor={`input-${index}`}> {card.cardType.toUpperCase()} </label>
