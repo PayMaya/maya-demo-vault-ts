@@ -43,8 +43,10 @@ function AddNewCardForm ({ onCloseModal }: AddNewCardFormProps) {
             <input type="number" name="cardNumber" placeholder="Card Number" maxLength={16} />
             <input type="text" name="expDate" placeholder="Date (MM/YY)" maxLength={5} />
             <input type="number" name="cvc" placeholder="CVC" maxLength={3}/>
-            <input type="checkbox" id="isDefault" name="isDefault" />
-            <label htmlFor='isDefault'> Set as default </label>
+            <div>
+                <input type="checkbox" id="isDefault" name="isDefault" />
+                <label htmlFor='isDefault'> Set as default </label>
+            </div>
                 <button type="submit" className="btn green">Save</button>
         </form>
    )
