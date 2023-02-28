@@ -1,7 +1,5 @@
-import { Dispatch } from 'redux';
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 import { Navigate } from 'react-router-dom';
-import { paymentCleared } from '../actions/payment/actionCreators';
 
 interface PostPaymentRedirectProps {
     children: JSX.Element
@@ -9,13 +7,9 @@ interface PostPaymentRedirectProps {
 
 function PostPaymentRoute({ children }: PostPaymentRedirectProps) {
     const postPaymentRedirectUrl: string = useSelector((state: AppState) => state.postPaymentRedirectUrl)
-    const redirectUrl: string = postPaymentRedirectUrl
 
-    const dispatch: Dispatch<any> = useDispatch()
-
-    if (redirectUrl) {
-        dispatch(paymentCleared())
-        return ( <Navigate to={redirectUrl} replace={true} /> ) 
+    if (postPaymentRedirectUrl) {
+        return ( <Navigate to={postPaymentRedirectUrl} replace={true} /> ) 
     } else {
         return ( children )
     }

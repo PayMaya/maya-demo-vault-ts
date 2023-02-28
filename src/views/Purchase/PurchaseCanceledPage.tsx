@@ -1,3 +1,7 @@
+import { useEffect } from 'react';
+import { Dispatch } from 'redux';
+import { useDispatch } from "react-redux"
+import { paymentCleared } from '../../actions/payment/actionCreators';
 import ContentSection from '../../components/ContentSection';
 import Footer from '../../components/Footer';
 import HomeButton from '../../components/HomeButton';
@@ -7,6 +11,11 @@ import UserCard from '../../components/UserCard';
 import VaultedCardsButton from '../../components/VaultedCardsButton';
 
 function PurchaseCanceledPage() {
+  const dispatch: Dispatch<any> = useDispatch()
+
+  useEffect(() => {
+    dispatch(paymentCleared())
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div className='body'>

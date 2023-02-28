@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Dispatch } from 'redux';
 import { useDispatch } from "react-redux"
 import { clearCartThunk } from '../../thunks/cart';
+import { paymentCleared } from '../../actions/payment/actionCreators';
 import NavBar from '../../components/NavBar';
 import Footer from '../../components/Footer';
 import TitleSection from '../../components/TitleSection';
@@ -15,6 +16,7 @@ function PurchaseSuccessPage() {
 
   useEffect(() => {
     dispatch(clearCartThunk())
+    dispatch(paymentCleared())
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
