@@ -40,7 +40,7 @@ function AddNewCardForm ({ onCloseModal }: AddNewCardFormProps) {
 
     return (
         <form className="add-new-card-form" onSubmit={(e: React.SyntheticEvent) => onAddCard(e)}>
-            <input type="number" name="cardNumber" placeholder="Card number" maxLength={16} />
+            <input type="number" name="cardNumber" placeholder="Card Number" maxLength={16} />
             <input type="text" name="expDate" placeholder="Date (MM/YY)" maxLength={5} />
             <input type="number" name="cvc" placeholder="CVC" maxLength={3}/>
             <input type="checkbox" id="isDefault" name="isDefault" />

@@ -22,25 +22,32 @@ export function CheckoutCardForm() {
     }
 
     return (
-        <form className="checkout-form" onSubmit={(event) => {onCheckoutWithSavedCard(event)}}>
-            <div className="checkout-card-list">
-                { cards.map((card,index) => {
-                    return (
-                        <div className="checkout-card" key={index}>
-                            <input className="checkout-card-input" type="radio" value={card.cardTokenId} name="card" id={`input-${index}`}/>
-                            <div className="card-info">
-                                <div className='card-type'>
-                                    <label htmlFor={`input-${index}`}> {card.cardType.toUpperCase()} </label>
-                                </div>
-                                <div className='card-number'>
-                                    <p> {`${card.first6}*****${card.last4}`} </p>
-                                </div>
-                            </div>
-                        </div>
-                    )
-                })}
-            </div>
-            <button type="submit" className="btn green large">Checkout</button>
-        </form>
+        <div className="checkout-cards-container">
+            { cards.length > 0 ? <form className="checkout-form" onSubmit={(event) => {onCheckoutWithSavedCard(event)}}>
+                <div className="checkout-card-list">
+                    { renderCardList(cards) }
+                </div>
+                <button type="submit" className="btn green large">Checkout</button>
+            </form> : <p className="no-cards">No Cards Saved</p>}
+            
+        </div>
     )
+}
+
+function renderCardList(cards: CardDetails[]) {
+    return cards.map((card,index) => {
+        return (
+            <div className="checkout-card" key={index}>
+                <input className="checkout-card-input" type="radio" value={card.cardTokenId} name="card" id={`input-${index}`}/>
+                <div className="card-info">
+                    <div className='card-type'>
+                        <label htmlFor={`input-${index}`}> {card.cardType.toUpperCase()} </label>
+                    </div>
+                    <div className='card-number'>
+                        <p> {`${card.first6}*****${card.last4}`} </p>
+                    </div>
+                </div>
+            </div>
+        )
+    });
 }

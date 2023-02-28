@@ -7,6 +7,7 @@ import TitleSection from '../../components/TitleSection';
 import UserCard from '../../components/UserCard';
 import HomeButton from '../../components/HomeButton';
 import ContentSection from '../../components/ContentSection';
+import VaultedCardsButton from '../../components/VaultedCardsButton';
 
 function PurchaseSuccessPage() {
   const dispatch: Dispatch<any> = useDispatch()
@@ -14,7 +15,7 @@ function PurchaseSuccessPage() {
   return (
     <div className='body'>
       <NavBar
-        left={<HomeButton onClick={() => dispatch(clearCartThunk())} />}
+        left={<><HomeButton onClick={() => dispatch(clearCartThunk())} /> <VaultedCardsButton/> </>}
         right={<UserCard />}
       />
       <TitleSection text='Purchase successful!' />

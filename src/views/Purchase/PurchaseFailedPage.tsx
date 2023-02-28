@@ -4,13 +4,14 @@ import HomeButton from '../../components/HomeButton';
 import NavBar from '../../components/NavBar';
 import TitleSection from '../../components/TitleSection';
 import UserCard from '../../components/UserCard';
+import VaultedCardsButton from '../../components/VaultedCardsButton';
 
 function PurchaseFailedPage() {
 
   return (
      <div className='body'>
       <NavBar
-        left={<HomeButton />}
+        left={<><HomeButton /><VaultedCardsButton /></>}
         right={<UserCard />}
       />
       <TitleSection text='Purchase failed! '/>
