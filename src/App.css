@@ -361,12 +361,13 @@ p {
 .add-new-card-form input[type="text"], [type="number"] {
   font-family: "jeko-bold",sans-serif;
   background-color : #F4F5F5; 
-  width: 90%;
+  width: 100%;
   height: 6vh;
   border-radius: 16px;
-  margin: 1vh 1vw;
-  padding: 10px 24px;
+  margin: 1vh 0;
+  padding: 0.5vh 0;
   border: 0;
+  text-indent: 3%;
   outline: none;
 }
 
@@ -395,6 +396,18 @@ p {
 .new-card-checkout {
   display: flex;
   justify-content: center;
+}
+
+.new-card-info {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 80%;
+}
+
+.new-card-settings {
+  margin: auto;
+  width: 80%;
 }
 .checkout-cards-container .no-cards {
   text-align: center;
