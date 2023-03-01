@@ -1,5 +1,6 @@
 interface AppState {
-    cards: Cards
+    cards: CardDetails[]
+    defaultCard: string
     paymentTokenId: string
     cardTokenId: string
     cart: Cart

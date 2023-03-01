@@ -10,10 +10,17 @@ const cards = (state: CardDetails[] = [], action: GetCardsAction): CardDetails[]
       payload.reverse()
       const cardsList = payload.filter((card: CardDetails) => card.state === 'VERIFIED')
       return cardsList
+    default:
+      return state
+  }
+}
+
+const defaultCard = (state: string = '', action: any): string => {
+  switch (action.type) {
     case cardActionTypes.MAKE_CARD_DEFAULT_SUCCESSFUL:
-      const { payload: defaultCard } = action
-      const updatedCards = state.map((card) => card.cardTokenId === defaultCard.cardTokenId ? defaultCard : card);
-      return updatedCards 
+    case cardActionTypes.CREATE_CARD_SUCCESSFUL:
+      const { payload } = action
+      return payload.cardTokenId
     default:
       return state
   }
@@ -104,4 +111,4 @@ const postPaymentRedirectUrl = (state: string | null = null, action: CreateCardP
   }
 }
 
-export { cards, paymentTokenId, currentUser, cart, postPaymentRedirectUrl }
+export { cards, defaultCard, paymentTokenId, currentUser, cart, postPaymentRedirectUrl }
