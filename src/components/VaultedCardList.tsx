@@ -6,13 +6,14 @@ import VaultedCard from './VaultedCard';
 
 function VaultedCardList() {
     const cards: CardDetails[] = useSelector((state: AppState) => state.cards)
+    const defaultCard: string = useSelector((state: AppState) => state.defaultCard)
     const mayaCustomerId: string = useSelector((state: AppState) => state.currentUser.mayaCustomerId!)
 
     const dispatch: Dispatch<any> = useDispatch()
 
     useEffect(() => {
         dispatch(getCardsThunk(mayaCustomerId))
-    }, [cards]) // eslint-disable-line react-hooks/exhaustive-deps
+    }, [defaultCard]) // eslint-disable-line react-hooks/exhaustive-deps
 
     if (cards.length === 0) {
         return (
