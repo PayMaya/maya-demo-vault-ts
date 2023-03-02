@@ -451,17 +451,29 @@ p {
   flex-direction: column;
 }
 .accordion-button {
+  display: flex;
+  width:80%;
   font-family: "jeko-bold", sans-serif;
   background: #cddede;
   text-align: center;
   cursor: pointer;
+  margin:auto;
+  justify-content: center;
   padding: 1em;
+  position: relative;
 }
 
 .accordion-button:hover {
   background-color: #899393;
-
 }
+
+.accordion-caret {
+  position: absolute;
+  right: 5%;
+  margin: auto;
+  color: black;
+}
+
 .accordion-content {
   display: flex;
   overflow:scroll;
@@ -471,6 +483,10 @@ p {
 }
 .accordion-state:checked ~ .accordion-content {  
   max-height: 100vh;
+}
+
+.accordion-state:not(:checked) ~ label .accordion-button .accordion-caret {  
+  transform: rotate(90deg);
 }
 
 .accordion-inner {
