@@ -15,7 +15,7 @@ export function createPaymentTokenFailed() {
 
 export function paymentSuccessful(payload: CreateCardPaymentPayload) {
     return {
-        type: actionTypes.PAYMENT_SUCESSFUL,
+        type: actionTypes.PAYMENT_SUCCESSFUL,
         payload
     }
 }

@@ -72,7 +72,7 @@ const cart = (state: Cart = initCart, action: CartAction): Cart => {
       updatedCart.totalAmount = updatedCart.items.map(items => items.totalPrice).reduce((a, b) => a + b, 0)
       
       return updatedCart
-    case paymentActionTypes.PAYMENT_SUCESSFUL:
+    case paymentActionTypes.PAYMENT_SUCCESSFUL:
     case cartActionTypes.CLEAR_CART:
       return initCart
     default:
@@ -99,7 +99,7 @@ const currentUser = (state: User = defaultUser, action: any): User => {
 
 const postPaymentRedirectUrl = (state: string | null = null, action: CreateCardPaymentAction): string | null => {
   switch (action.type) {
-    case paymentActionTypes.PAYMENT_SUCESSFUL:
+    case paymentActionTypes.PAYMENT_SUCCESSFUL:
     case paymentActionTypes.PAYMENT_FAILED:
     case paymentActionTypes.PAYMENT_CANCELLED:
       const { payload } = action
