@@ -476,7 +476,7 @@ p {
 
 .accordion-content {
   display: flex;
-  overflow:scroll;
+  overflow:auto;
   max-height: 0;
   transition: all 0.2s;
   justify-content: center;
