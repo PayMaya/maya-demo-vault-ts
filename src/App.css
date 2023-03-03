@@ -452,7 +452,7 @@ p {
 }
 .accordion-button {
   display: flex;
-  width:80%;
+  width:85%;
   font-family: "jeko-bold", sans-serif;
   background: #cddede;
   text-align: center;

@@ -15,7 +15,7 @@ export function CheckoutPage() {
         <NavBar left={<><HomeButton/><VaultedCardsButton/></>}right={<UserCard/>}/>
         <TitleSection text="Pay Using"/>
         <ContentSection>
-            <Accordion header="Saved Cards" group="checkout" index={"1"}>
+            <Accordion header="Saved Cards" group="checkout" index={"1"} defaultChecked={true}>
                 <CheckoutCardForm/>
             </Accordion>
             <Accordion header="Use A Different Card" group="checkout" index={"2"}>
