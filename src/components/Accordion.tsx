@@ -2,13 +2,14 @@ interface AccordionProps {
     header: string,
     children: React.ReactNode,
     group: string,
-    index: string
+    index: string,
+    defaultChecked?: boolean
 }
 
-export function Accordion({ header, children, group, index }: AccordionProps) {
+export function Accordion({ header, children, group, index, defaultChecked = false }: AccordionProps) {
     return (
         <div className="accordion-container">
-            <input type="radio" className="accordion-state" id={`accordion-state-${index}`} name={ group } hidden/>
+            <input type="radio" className="accordion-state" id={`accordion-state-${index}`} name={ group } hidden defaultChecked={defaultChecked}/>
             <label htmlFor={`accordion-state-${index}`}>
                 <div className="accordion-button">
                     { header }
