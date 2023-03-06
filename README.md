@@ -11,6 +11,13 @@ This project was created with React (React Redux and Thunk) and TypeScript.
 
 Do not build your application on top of this demo.
 
+For demo purposes, the following functions were done on the frontend.
+- [customerService.ts](src/services/customerService.ts)
+- [cardService.ts](src/services/cardService.ts)
+- [paymentService.ts](src/services/paymentService.ts)
+
+However, when implementing for commercial use, please do the following transactions on your backend servers to protect the cardTokenId of the customer.
+
 ---
 
 ## Requirements

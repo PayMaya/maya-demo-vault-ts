@@ -8,6 +8,12 @@ const publicAuth: string = Buffer.from(`${config.maya_payments.pub_api_key}:`, '
 const secretAuth: string = Buffer.from(`${config.maya_payments.sec_api_key}:`, 'binary').toString('base64')
 const redirectUrl = `${config.host_url}/purchase`;
 
+/* 
+    For demo purposes, the following functions were done on the frontend. 
+    However, when implementing for commercial use, please do the following transactions
+    on your backend servers to protect the cardTokenId of the customer.
+*/
+
 export const createPaymentToken = async (newCardDetails: NewCardDetails) => {
     const headers = {
         accept: 'application/json',
