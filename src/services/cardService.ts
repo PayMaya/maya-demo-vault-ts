@@ -6,6 +6,12 @@ import { Buffer } from 'buffer';
 const mayaPaymentsUrl: string = config.maya_payments.url
 const secretAuth: string = Buffer.from(`${config.maya_payments.sec_api_key}:`, 'binary').toString('base64')
 
+/* 
+    For demo purposes, the following functions were done on the frontend. 
+    However, when implementing for commercial use, please do the following transactions
+    on your backend servers to protect the cardTokenId of the customer.
+*/
+
 export const retrieveCards = async (customerId: string) => {
     const headers = {
         accept: 'application/json',
